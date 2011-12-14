@@ -1,3 +1,4 @@
+/*
         copyright 2011 Ruben De Smet
         This file is part of yaydr
 
@@ -14,10 +15,38 @@
 
     You should have received a copy of the GNU General Public License
     along with yaydr.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
--Have fun rendering your stuff! Will be upping to Archlinux AUR
--Compiling: (I'll create standard makefile later on)
- *install code::blocks
- *open project file
- *click build and run
- *enjoy!
+
+
+#ifndef RENDER_MANAGER_H
+#define RENDER_MANAGER_H
+
+#include <string>
+#include <vector>
+
+#include "render_task.h"
+
+class render_manager
+{
+    public:
+        render_manager();
+        virtual ~render_manager();
+        static render_manager& Instance();
+        void load_tasks();
+
+        vector<render_task*> load_file_or_directory(string);
+        void announce(vector<render_task*>);
+
+        render_task* task_by_hash(string);
+
+        render_task* new_task(string);
+        render_task* input_task(string);
+    protected:
+    private:
+        vector<render_task*> load_directory(string);
+
+        vector<render_task*> _tasks;
+};
+
+#endif // RENDER_MANAGER_H

@@ -1,3 +1,4 @@
+/*
         copyright 2011 Ruben De Smet
         This file is part of yaydr
 
@@ -14,10 +15,25 @@
 
     You should have received a copy of the GNU General Public License
     along with yaydr.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
--Have fun rendering your stuff! Will be upping to Archlinux AUR
--Compiling: (I'll create standard makefile later on)
- *install code::blocks
- *open project file
- *click build and run
- *enjoy!
+
+#ifndef DEBUG_H
+#define DEBUG_H
+
+#include <string>
+
+using namespace std;
+
+class log
+{
+    public:
+        static void debug(string);
+        static void warning(string);
+        static void error(string);
+        static void message(string);
+    protected:
+    private:
+};
+
+#endif // DEBUG_H

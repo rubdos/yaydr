@@ -1,0 +1,398 @@
+# depslib dependency file v1.0
+1320403332 source:/home/ruben/personal projects/yafaraydistribution/main.cpp
+	<iostream>
+	<stdlib.h>
+	<signal.h>
+	"include/node_manager.h"
+	"include/property_manager.h"
+	"include/log.h"
+	"include/server.h"
+	"include/configuration.h"
+	"include/command_parser.h"
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+	<boost/algorithm/string.hpp>
+	<boost/filesystem.hpp>
+
+1320179943 /home/ruben/personal projects/yafaraydistribution/include/node_manager.h
+	"node.h"
+	<string>
+	<vector>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+
+1320783263 /home/ruben/personal projects/yafaraydistribution/include/node.h
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+
+1320442544 /home/ruben/personal projects/yafaraydistribution/include/property_manager.h
+	"../include/log.h"
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+
+1319657149 /home/ruben/personal projects/yafaraydistribution/include/log.h
+	<string>
+
+1319667983 /home/ruben/personal projects/yafaraydistribution/include/server.h
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+
+1320143470 /home/ruben/personal projects/yafaraydistribution/include/command_parser.h
+	<string>
+	<iostream>
+
+1320179566 source:/home/ruben/personal projects/yafaraydistribution/src/command_parser.cpp
+	"../include/command_parser.h"
+	"../include/render_manager.h"
+	"../include/node_manager.h"
+	"../include/log.h"
+	<boost/algorithm/string.hpp>
+	<boost/algorithm/string/split.hpp>
+	<boost/algorithm/string/trim.hpp>
+
+1320783239 /home/ruben/personal projects/yafaraydistribution/include/render_manager.h
+	<string>
+	<vector>
+	"render_task.h"
+
+1320777822 /home/ruben/personal projects/yafaraydistribution/include/render_task.h
+	<string>
+	<vector>
+	<stdio.h>
+	<string.h>
+	<iostream>
+
+1320176257 source:/home/ruben/personal projects/yafaraydistribution/src/file_compressor.cpp
+	"../include/file_compressor.h"
+	<assert.h>
+	"zlib.h"
+
+1320325692 /home/ruben/personal projects/yafaraydistribution/include/file_compressor.h
+	<assert.h>
+	<iostream>
+	<stdio.h>
+	"zlib.h"
+	<fcntl.h>
+	<io.h>
+
+1320443335 source:/home/ruben/personal projects/yafaraydistribution/src/log.cpp
+	"../include/log.h"
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+
+1320781765 source:/home/ruben/personal projects/yafaraydistribution/src/node.cpp
+	"../include/node.h"
+	"../include/log.h"
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+
+1320443372 source:/home/ruben/personal projects/yafaraydistribution/src/node_manager.cpp
+	"../include/node_manager.h"
+	"../include/log.h"
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+	<boost/algorithm/string.hpp>
+
+1320442451 source:/home/ruben/personal projects/yafaraydistribution/src/property_manager.cpp
+	"../include/property_manager.h"
+	"../include/log.h"
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+
+1320782264 source:/home/ruben/personal projects/yafaraydistribution/src/render_manager.cpp
+	"../include/render_manager.h"
+	"../include/render_task.h"
+	"../include/log.h"
+	<string>
+	<iostream>
+	<fstream>
+	<iterator>
+	<vector>
+	<boost/algorithm/string.hpp>
+	<boost/algorithm/string/split.hpp>
+	<boost/filesystem.hpp>
+	<boost/filesystem/operations.hpp>
+	<boost/filesystem/path.hpp>
+	<boost/progress.hpp>
+
+1320947040 source:/home/ruben/personal projects/yafaraydistribution/src/server.cpp
+	"../include/server.h"
+	"../include/log.h"
+	"../include/property_manager.h"
+	"../include/node_manager.h"
+	"../include/node.h"
+	"../include/render_manager.h"
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/algorithm/string.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+
+1320780922 source:/home/ruben/personal projects/yafaraydistribution/src/render_task.cpp
+	"../include/render_task.h"
+	"../include/file_compressor.h"
+	"../include/node_manager.h"
+	"../include/log.h"
+	<boost/filesystem.hpp>
+	<boost/algorithm/string.hpp>
+	<boost/algorithm/string/split.hpp>
+	<boost/algorithm/string/trim.hpp>
+	<iostream>
+	<fstream>
+	<boost/random/random_device.hpp>
+	<boost/random/uniform_int_distribution.hpp>
+	<cryptopp/sha.h>
+	<cryptopp/hex.h>
+	<cryptopp/files.h>
+
+1320778681 source:/home/ruben/personal projects/yafaraydistribution/src/configuration.cpp
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<fstream>
+	<vector>
+	"../include/configuration.h"
+	"../include/property_manager.h"
+	"../include/log.h"
+	<boost/filesystem.hpp>
+	<boost/algorithm/string.hpp>
+	<boost/algorithm/string/split.hpp>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+	<boost/algorithm/string.hpp>
+	<boost/random/random_device.hpp>
+	<boost/random/uniform_int_distribution.hpp>
+
+1320439648 /home/ruben/personal projects/yafaraydistribution/include/configuration.h
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<fstream>
+	<vector>
+	<boost/filesystem.hpp>
+	<boost/algorithm/string.hpp>
+	<boost/algorithm/string/split.hpp>
+
+1323878157 source:/home/ruben/data/personal projects/yafaraydistribution/main.cpp
+	<iostream>
+	<stdlib.h>
+	<signal.h>
+	"include/node_manager.h"
+	"include/property_manager.h"
+	"include/log.h"
+	"include/server.h"
+	"include/configuration.h"
+	"include/command_parser.h"
+	"include/render_manager.h"
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+	<boost/algorithm/string.hpp>
+	<boost/filesystem.hpp>
+
+1320179943 /home/ruben/data/personal projects/yafaraydistribution/include/node_manager.h
+	"node.h"
+	<string>
+	<vector>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+
+1323714825 /home/ruben/data/personal projects/yafaraydistribution/include/node.h
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+
+1320442544 /home/ruben/data/personal projects/yafaraydistribution/include/property_manager.h
+	"../include/log.h"
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+
+1319657149 /home/ruben/data/personal projects/yafaraydistribution/include/log.h
+	<string>
+
+1319667983 /home/ruben/data/personal projects/yafaraydistribution/include/server.h
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+
+1320439648 /home/ruben/data/personal projects/yafaraydistribution/include/configuration.h
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<fstream>
+	<vector>
+	<boost/filesystem.hpp>
+	<boost/algorithm/string.hpp>
+	<boost/algorithm/string/split.hpp>
+
+1320143470 /home/ruben/data/personal projects/yafaraydistribution/include/command_parser.h
+	<string>
+	<iostream>
+
+1320179566 source:/home/ruben/data/personal projects/yafaraydistribution/src/command_parser.cpp
+	"../include/command_parser.h"
+	"../include/render_manager.h"
+	"../include/node_manager.h"
+	"../include/log.h"
+	<boost/algorithm/string.hpp>
+	<boost/algorithm/string/split.hpp>
+	<boost/algorithm/string/trim.hpp>
+
+1323789364 /home/ruben/data/personal projects/yafaraydistribution/include/render_manager.h
+	<string>
+	<vector>
+	"render_task.h"
+
+1323878308 /home/ruben/data/personal projects/yafaraydistribution/include/render_task.h
+	<string>
+	<vector>
+	<stdio.h>
+	<string.h>
+	<iostream>
+
+1320778681 source:/home/ruben/data/personal projects/yafaraydistribution/src/configuration.cpp
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<fstream>
+	<vector>
+	"../include/configuration.h"
+	"../include/property_manager.h"
+	"../include/log.h"
+	<boost/filesystem.hpp>
+	<boost/algorithm/string.hpp>
+	<boost/algorithm/string/split.hpp>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+	<boost/algorithm/string.hpp>
+	<boost/random/random_device.hpp>
+	<boost/random/uniform_int_distribution.hpp>
+
+1320176257 source:/home/ruben/data/personal projects/yafaraydistribution/src/file_compressor.cpp
+	"../include/file_compressor.h"
+	<assert.h>
+	"zlib.h"
+
+1320325692 /home/ruben/data/personal projects/yafaraydistribution/include/file_compressor.h
+	<assert.h>
+	<iostream>
+	<stdio.h>
+	"zlib.h"
+	<fcntl.h>
+	<io.h>
+
+1323704811 source:/home/ruben/data/personal projects/yafaraydistribution/src/log.cpp
+	"../include/log.h"
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+
+1323721222 source:/home/ruben/data/personal projects/yafaraydistribution/src/node.cpp
+	"../include/node.h"
+	"../include/log.h"
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+	<boost/lambda/lambda.hpp>
+
+1323702278 source:/home/ruben/data/personal projects/yafaraydistribution/src/node_manager.cpp
+	"../include/node_manager.h"
+	"../include/log.h"
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+	<boost/algorithm/string.hpp>
+
+1320442451 source:/home/ruben/data/personal projects/yafaraydistribution/src/property_manager.cpp
+	"../include/property_manager.h"
+	"../include/log.h"
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+
+1323878131 source:/home/ruben/data/personal projects/yafaraydistribution/src/render_manager.cpp
+	"../include/render_manager.h"
+	"../include/render_task.h"
+	"../include/log.h"
+	"../include/configuration.h"
+	"../include/property_manager.h"
+	<string>
+	<iostream>
+	<fstream>
+	<iterator>
+	<vector>
+	<boost/algorithm/string.hpp>
+	<boost/algorithm/string/split.hpp>
+	<boost/filesystem.hpp>
+	<boost/filesystem/operations.hpp>
+	<boost/filesystem/path.hpp>
+	<boost/progress.hpp>
+
+1323878381 source:/home/ruben/data/personal projects/yafaraydistribution/src/render_task.cpp
+	"../include/render_task.h"
+	"../include/file_compressor.h"
+	"../include/node_manager.h"
+	"../include/log.h"
+	"../include/configuration.h"
+	<boost/filesystem.hpp>
+	<boost/algorithm/string.hpp>
+	<boost/algorithm/string/split.hpp>
+	<boost/algorithm/string/trim.hpp>
+	<iostream>
+	<fstream>
+	<boost/random/random_device.hpp>
+	<boost/random/uniform_int_distribution.hpp>
+	<cryptopp/sha.h>
+	<cryptopp/hex.h>
+	<cryptopp/files.h>
+
+1323787747 source:/home/ruben/data/personal projects/yafaraydistribution/src/server.cpp
+	"../include/server.h"
+	"../include/log.h"
+	"../include/property_manager.h"
+	"../include/node_manager.h"
+	"../include/node.h"
+	"../include/render_manager.h"
+	<string>
+	<boost/asio.hpp>
+	<boost/thread.hpp>
+	<boost/algorithm/string.hpp>
+	<boost/date_time/posix_time/posix_time.hpp>
+

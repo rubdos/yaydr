@@ -1,3 +1,4 @@
+/*
         copyright 2011 Ruben De Smet
         This file is part of yaydr
 
@@ -14,10 +15,27 @@
 
     You should have received a copy of the GNU General Public License
     along with yaydr.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
--Have fun rendering your stuff! Will be upping to Archlinux AUR
--Compiling: (I'll create standard makefile later on)
- *install code::blocks
- *open project file
- *click build and run
- *enjoy!
+
+#ifndef COMMAND_PARSER_H
+#define COMMAND_PARSER_H
+
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+class command_parser
+{
+    public:
+        command_parser();
+        virtual ~command_parser();
+
+        void start();
+        bool parse(string);
+    protected:
+    private:
+};
+
+#endif // COMMAND_PARSER_H
