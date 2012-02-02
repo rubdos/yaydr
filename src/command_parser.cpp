@@ -36,39 +36,52 @@ command_parser::command_parser()
 bool command_parser::parse(string line)
 {
     vector<string> linesplit;
+    /* Split the line by spaces and tabs */
     split( linesplit, line, is_any_of(" \t"), token_compress_on );
+
     if(linesplit[0].compare("quit") == 0 || line.compare("exit") == 0)
     {
         return false;
     }
     if(linesplit[0].compare("refresh") == 0)
     {
+        /* Refresh the nodelist */
         node_manager::Instance().global_connect();
         return true;
     }
     if(linesplit[0].compare("render") == 0)
     {
+        /* Lets render some file(s) */
         string filename = line.substr(7, line.length() - 7 );
         trim_if(filename, is_any_of(" \t\n\r\""));
+
+        // Our render_manager will take care of the filename. It'll scan for all xml's
         vector<render_task*> tasks = render_manager::Instance().load_file_or_directory( filename );
-        cout << "Starting render job of " << tasks.size() << endl;
+
+        stringstream ss; //create a stringstream for converting our number
+        ss << tasks.size();
+        log::message("Starting render job of " + ss.str());
         render_manager::Instance().announce(tasks);
+
         return true;
     }
     if(linesplit[0].compare("add_ip") == 0)
     {
+        /* Manually add an IP to the nodelist */
         node_manager::Instance().get_node_by_ip(linesplit[1]);
         return true;
     }
 
     if(linesplit[0].compare("help") == 0)
     {
+        /* Print help and return */
         cout << "quit\t\t\tQuit the yafaray distributor" << endl;
         cout << "exit\t\t\tIdem" << endl;
         cout << "help\t\t\tShow this help message" << endl;
         cout << "refresh\t\t\tRefresh the nodes manually" << endl;
         cout << "add_ip [ip]\t\tAdd an ipv4 address to the node list" << endl;
         cout << "render [directory/file]\tRender a file or recurse a directory" << endl;
+        return true;
     }
     return true;
 }

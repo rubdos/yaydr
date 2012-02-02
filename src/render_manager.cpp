@@ -108,6 +108,11 @@ vector<render_task*> render_manager::load_directory(string directory)
     vector<render_task*> result;
     const path dir_path(directory);
 
+    if(! is_directory(dir_path) )
+    {
+        return result; // If the directory doesn't exist, return no tasks.
+    }
+
     directory_iterator end_itr; // default construction yields past-the-end
     int i = 0;
     for ( directory_iterator itr( dir_path ); itr != end_itr; ++itr )
