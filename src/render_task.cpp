@@ -44,6 +44,9 @@ using namespace boost;
 
 render_task::render_task()
 {
+    /* Construct a new render_task */
+
+    //make sure we can store our task
     boost::filesystem::path rtsksdir(configuration::Instance().yaydrdir.string() + "rendertasks/");
     if(!boost::filesystem::is_directory(rtsksdir))
     {
@@ -53,6 +56,7 @@ render_task::render_task()
 
 render_task* render_task::from_xml_file(string filename)
 {
+    /* Load the task from an xml file */
     render_task* rt = new render_task();
 
     if(rt->hash.compare("") == 0)
@@ -84,7 +88,7 @@ render_task* render_task::from_xml_file(string filename)
     fclose(source);
     fclose(dest);
     /*
-    We have to compress the stuff. When testing, I had an array of 6000 xml's. Well. It was 6 gigabytes.
+    We have to compress the stuff. When testing, I had an array of 6000 xml's (=one xml per frame). Well. It was 6 gigabytes.
     1 file @ 1.6 MB. 1 gzip file @ 280 kb. Much better ;)
     */
 
@@ -99,6 +103,7 @@ render_task* render_task::from_xml_file(string filename)
 
 render_task* render_task::from_gzip_file(string filename)
 {
+    /* Load a gzipped xml file by filename. */
     render_task* rt = new render_task();
 
     if(rt->hash.compare("") == 0)
@@ -147,6 +152,7 @@ render_task* render_task::from_gzip_file(string filename)
 
 render_task* render_task::from_hash(string hash)
 {
+    /* Load the task by a sha1 identification hash */
     ifstream file;
     file.open( (configuration::Instance().yaydrdir.string() + "rendertasks/" + hash + "/" + "configuration.conf").c_str());
     if (file.is_open())
@@ -191,6 +197,8 @@ render_task* render_task::from_hash(string hash)
 
 void render_task::generate_password()
 {
+    /* Generate a __sha1sum identification and a new password, to release the task from
+       the cloud when it's been received well.*/
     string __password;
     string __sha1sum;
 
@@ -218,6 +226,7 @@ void render_task::generate_password()
 
 void render_task::save_configuration()
 {
+    /* Save the configuration.conf file in the rendertasks directory */
     ofstream pf;
     pf.open( (this->unique_dir + "configuration.conf").c_str() , ios::trunc);
     pf << "xml=" << this->xml_file_name << endl;
@@ -232,6 +241,7 @@ void render_task::save_configuration()
 
 void render_task::announce()
 {
+    /* Check if someone is interested in rendering this task */
     /*
     ifstream file;
     file.open(this->gzip_file_name.c_str(), ios::binary);

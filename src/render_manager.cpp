@@ -51,6 +51,7 @@ render_manager::render_manager()
 
 void render_manager::load_tasks()
 {
+    /* Loads all previously started rendertasks and starts/annouces them */
     log::debug("Loading open rendertasks");
     vector<render_task*> result;
     const path dir_path(configuration::Instance().yaydrdir.string() + "rendertasks");
@@ -80,6 +81,7 @@ render_manager& render_manager::Instance()
 
 void render_manager::announce(vector<render_task*> tasks)
 {
+    /* Announce and add a render task */
     log::debug("Announcing... Have a second.");
     for(unsigned int i = 0; i < tasks.size(); i++)
     {
@@ -90,6 +92,7 @@ void render_manager::announce(vector<render_task*> tasks)
 
 vector<render_task*> render_manager::load_file_or_directory(string file_or_directory)
 {
+    /* Takes a raw input string from the user and checks whether it's nothing, a file, or a dir */
     if(is_regular(file_or_directory))
     {
         vector<render_task*> task;
@@ -104,7 +107,10 @@ vector<render_task*> render_manager::load_file_or_directory(string file_or_direc
 
 vector<render_task*> render_manager::load_directory(string directory)
 {
+    /* Loads a directory with XML files */
     log::debug("Recursing directory " + directory);
+
+    //prepare results
     vector<render_task*> result;
     const path dir_path(directory);
 
@@ -133,6 +139,7 @@ vector<render_task*> render_manager::load_directory(string directory)
 
 render_task* render_manager::task_by_hash(string hash)
 {
+    /* Get a render_task* object pointer by the sha1 hash identification string */
     for(unsigned int i = 0;i < this->_tasks.size(); i++)
     {
         if(this->_tasks[i]->hash == hash)
@@ -145,6 +152,7 @@ render_task* render_manager::task_by_hash(string hash)
 
 render_task* render_manager::new_task(string filename)
 {
+    /* Load a newly created render_task by the filename*/
     render_task* result = render_task::from_xml_file(filename);
     result->owner = property_manager::Instance().get("public.systemid");
     result->save_configuration();
@@ -153,6 +161,7 @@ render_task* render_manager::new_task(string filename)
 
 render_task* render_manager::input_task(string gzipdata)
 {
+    /* Loads a task from a gzipped xml file */
     /*render_task* result = render_task::from_gzip_data(gzipdata);
     this->_tasks.push_back(result);
     return result;*/

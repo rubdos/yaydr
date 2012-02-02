@@ -48,6 +48,7 @@ node_manager::node_manager()
 
 void node_manager::add_node(node* new_node)
 {
+    /* Add a node to the local node manager */
     this->nodes.push_back(new_node);
 }
 
@@ -58,6 +59,9 @@ node_manager& node_manager::Instance()
 
 void node_manager::load_node_file(string file)
 {
+    /* Nodes are stored into a file. Loads it up here */
+
+    //standard reading of file with an ifstream
     ifstream node_file(file.c_str());
     string line;
     while ( node_file.good() )
@@ -67,8 +71,10 @@ void node_manager::load_node_file(string file)
         split(splitted, line, boost::is_any_of("\t "));
         if(splitted[0].length() > 7)
         {
+            /* Succesrate isn't used yet. It will be used to prioritize a node above another if connection succeeds more than
+               with another one */
             node* new_node = new node(splitted[0]);
-            if(splitted.size() > 1) //the part after \t or space is the part that holds the success rate per node.
+            if(splitted.size() > 1) //the part after \t or space is the part that holds the success rate per node (not yet used).
             {
                 try
                 {
@@ -86,6 +92,7 @@ void node_manager::load_node_file(string file)
 
 void node_manager::global_connect()
 {
+    /* Try to connect to all known nodes */
     log::debug("Global connect");
     for(uint i = 0; i < this->nodes.size(); i++)
     {
@@ -99,6 +106,7 @@ void node_manager::global_connect()
 
 node* node_manager::get_node_by_ip(string ip)
 {
+    /* Convert an ip address into a node* object pointer */
     for(uint i = 0; i != this->nodes.size(); i++)
     {
         if(this->nodes[i]->ip_address.compare(ip) == 0)

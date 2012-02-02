@@ -56,6 +56,7 @@ server::~server()
 
 void server::loop()
 {
+    /* The main server loop port 10015 */
     boost::asio::io_service io_service;
 
     tcp::acceptor a(io_service, tcp::endpoint(tcp::v4(), 10015));
@@ -74,9 +75,10 @@ void server::loop()
 
 bool server::parse_command(string data, string ip_address)
 {
+    /* Parse a command that the node has sent */
     if(data.substr(0,3).compare("GET") == 0)
     {
-        //GET command
+        /* GET command: send back ONLY from public. namespace */
         string return_data = property_manager::Instance().get( "public." + data.substr( 4 , data.length( ) - 4 ) );
         if(return_data.compare("") == 0)
         {
@@ -85,6 +87,7 @@ bool server::parse_command(string data, string ip_address)
         }
         else
         {
+            /* Not found! */
             node* n = node_manager::Instance().get_node_by_ip(ip_address);
 
             if(n->connect())
@@ -106,12 +109,14 @@ bool server::parse_command(string data, string ip_address)
     }
     else if(data.substr(0,3).compare("REN") == 0) //Do we've got this?
     {
+        /* Check if we are permitted to use some CPU for a task. */
         if(render_manager::Instance().task_by_hash(data.substr( 4 , data.length( ) - 4 ) ) == NULL)
         {
             node* n = node_manager::Instance().get_node_by_ip(ip_address);
 
             if(n->connect())
             {
+                /* Let's already download it */
                 n->ask_for_task_xml(data.substr( 4 , data.length( ) - 4 ));
             }
             else
@@ -125,6 +130,8 @@ bool server::parse_command(string data, string ip_address)
     }
     else if(data.substr(0,3).compare("REQ") == 0) //request for xml
     {
+        /* External node asks for an xml file, if available. Else negate. */
+
         /*string plainText = "your string";
         string encoded;
         FileSource(plainText,
@@ -146,15 +153,18 @@ bool server::parse_command(string data, string ip_address)
 
 void server::session(socket_ptr sock)
 {
+    /* If somebody connects to this node, this function is called */
     try
     {
+        /* Infinitly loop till disconnection */
         for (;;)
         {
             char data[1024];
             memset( data, 0, sizeof(data) );
 
             boost::system::error_code error;
-            /*size_t length = */ sock->read_some(boost::asio::buffer(data), error);
+            /*size_t length = */
+            sock->read_some(boost::asio::buffer(data), error);
 
             string ip = (*sock).remote_endpoint().address().to_string();
 

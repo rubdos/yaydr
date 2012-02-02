@@ -41,13 +41,13 @@ using boost::lambda::var;
 
 node::node(string _ip_address)
 {
+    /* Initialize a new node by ip adress */
     this->ip_address = _ip_address;
 
     this->connected = false;
-    //init socket. Okay, init, more like 'deinit' :-p
+    //'init' socket (=set to NULL...)
     this->_socket = NULL;
     this->_deadline = new deadline_timer(io_service);
-    //this->_deadline.expires_from_now(boost::posix_time::seconds(60));
 }
 
 bool node::is_online()
@@ -66,6 +66,7 @@ void node::handle_connect(const boost::system::error_code& error)
 }
 bool node::connect()
 {
+    /* Connect to another node */
     //Perhaps we even dont HAVE to connect. Let's check
     if(this->_socket != NULL && this->_socket->is_open() && this->connected)
     {
@@ -140,6 +141,7 @@ void node::check_deadline()
 
 void node::load_data(string data)
 {
+    /* Try to get a public property from the node */
     log::debug("Loading data " + data);
     if(this->connect())
     {
@@ -149,6 +151,7 @@ void node::load_data(string data)
 
 void node::answer(string query, string data)
 {
+    /* Send back a property to the node who requested it.*/
     if(this->connect())
     {
         this->_send("ANS|" + query + "|" + data);
@@ -157,6 +160,14 @@ void node::answer(string query, string data)
 
 void node::check_render_task(string sum)
 {
+    /* This checks if the opposing node is interested in rendering a file (=ONE frame).
+       The opposing node can:
+        - Refuse (=just negate)
+         - because hard drive limit
+         - because to much work
+         - because the opposing node's user turned local rendering off
+        - Accept */
+
     if(this->connect())
     {
         this->_send("REN|" + sum);
@@ -165,6 +176,7 @@ void node::check_render_task(string sum)
 
 void node::ask_for_task_xml(string hash)
 {
+    /* Called function when interested in rendering a file. Expect a MB data back */
     if(this->connect())
     {
         this->_send("REQ|" + hash);
@@ -173,6 +185,7 @@ void node::ask_for_task_xml(string hash)
 
 void node::_send(string data)
 {
+    /* Raw write to node */
     _socket->send( boost::asio::buffer( data + "\r\n" , data.length() + 2 ) );
 
     char received_data[ 4 ];

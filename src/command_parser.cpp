@@ -35,12 +35,14 @@ command_parser::command_parser()
 
 bool command_parser::parse(string line)
 {
+    /* Parse the document */
     vector<string> linesplit;
     /* Split the line by spaces and tabs */
     split( linesplit, line, is_any_of(" \t"), token_compress_on );
 
     if(linesplit[0].compare("quit") == 0 || line.compare("exit") == 0)
     {
+        /* Quit the application */
         return false;
     }
     if(linesplit[0].compare("refresh") == 0)
@@ -75,12 +77,14 @@ bool command_parser::parse(string line)
     if(linesplit[0].compare("help") == 0)
     {
         /* Print help and return */
+
         cout << "quit\t\t\tQuit the yafaray distributor" << endl;
         cout << "exit\t\t\tIdem" << endl;
         cout << "help\t\t\tShow this help message" << endl;
         cout << "refresh\t\t\tRefresh the nodes manually" << endl;
         cout << "add_ip [ip]\t\tAdd an ipv4 address to the node list" << endl;
         cout << "render [directory/file]\tRender a file or recurse a directory" << endl;
+
         return true;
     }
     return true;
@@ -90,9 +94,12 @@ void command_parser::start()
 {
     while(true)
     {
+        /* This stuff isn't as reliable as it should be; If the console prints something
+           while the user is typing, he can start over. Somebody should explain me how
+           to do this right ;-) */
         cout << ">";
         char line[512];
-        cin.getline(line, 511); //we won't go over half a KB, are ya creazy? :p
+        cin.getline(line, 511); //we won't go over half a KB...
 
         if(!this->parse(string(line)))
         {

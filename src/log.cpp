@@ -29,18 +29,23 @@ using namespace std;
 
 void log::debug(string message)
 {
+    /* Debug message */
+    //TODO: Insert #if DEBUG.
     cout << "DEBUG:  " << message << endl;
 }
 void log::warning(string message)
 {
+    /* Warn the user about something what's almost serious */
     cerr << "WARNING:" << message << endl;
 }
 void log::error(string message)
 {
+    /* Print error and quit */
     cerr << "ERROR:  " << message << endl;
     exit(-1);
 }
 void log::message(string message)
 {
+    /* Inform the user. Better than cout!!!*/
     cout << message << endl;
 }

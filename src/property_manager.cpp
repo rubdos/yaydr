@@ -49,6 +49,7 @@ property_manager& property_manager::Instance()
 
 string property_manager::get(string query)
 {
+    /* Gets a property from the local properties list */
     for(uint i = 0; i != this->properties.size(); i++)
     {
         if(this->properties[i].name.compare(query) == 0)
@@ -61,6 +62,7 @@ string property_manager::get(string query)
 
 void property_manager::set(string query, string value)
 {
+    /* Sets a property in the local list */
     for(uint i = 0; i != this->properties.size(); i++)
     {
         if(this->properties[i].name.compare(query) == 0)
