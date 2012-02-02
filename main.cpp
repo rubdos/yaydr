@@ -17,18 +17,17 @@
     along with yaydr.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "node_manager.h"
+#include "property_manager.h"
+#include "log.h"
+#include "server.h"
+#include "configuration.h"
+#include "command_parser.h"
+#include "render_manager.h"
+
 #include <iostream>
 #include <stdlib.h>
 #include <signal.h>
-
-#include "include/node_manager.h"
-#include "include/property_manager.h"
-#include "include/log.h"
-#include "include/server.h"
-#include "include/configuration.h"
-#include "include/command_parser.h"
-#include "include/render_manager.h"
-
 
 #include <boost/asio.hpp>
 #include <boost/thread.hpp>

@@ -18,11 +18,11 @@
  */
 
 
-#include "../include/render_manager.h"
-#include "../include/render_task.h"
-#include "../include/log.h"
-#include "../include/configuration.h"
-#include "../include/property_manager.h"
+#include "render_manager.h"
+#include "render_task.h"
+#include "log.h"
+#include "configuration.h"
+#include "property_manager.h"
 
 #include <string>
 #include <iostream>

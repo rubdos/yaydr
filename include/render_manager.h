@@ -22,10 +22,10 @@
 #ifndef RENDER_MANAGER_H
 #define RENDER_MANAGER_H
 
+#include "render_task.h"
+
 #include <string>
 #include <vector>
-
-#include "render_task.h"
 
 class render_manager
 {

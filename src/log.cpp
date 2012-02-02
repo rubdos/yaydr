@@ -18,7 +18,7 @@
  */
 
 
-#include "../include/log.h"
+#include "log.h"
 
 #include <string>
 #include <stdio.h>

@@ -18,10 +18,10 @@
  */
 
 
-#include "../include/command_parser.h"
-#include "../include/render_manager.h"
-#include "../include/node_manager.h"
-#include "../include/log.h"
+#include "command_parser.h"
+#include "render_manager.h"
+#include "node_manager.h"
+#include "log.h"
 
 
 #include <boost/algorithm/string.hpp>

@@ -17,16 +17,16 @@
     along with yaydr.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "configuration.h"
+#include "property_manager.h"
+#include "log.h"
+
 #include <string>
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include <vector>
-
-#include "../include/configuration.h"
-#include "../include/property_manager.h"
-#include "../include/log.h"
 
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/string.hpp>

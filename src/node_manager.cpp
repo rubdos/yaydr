@@ -18,13 +18,11 @@
  */
 
 
-#include "../include/node_manager.h"
-
-#include "../include/log.h"
+#include "node_manager.h"
+#include "log.h"
 
 #include <string>
 #include <vector>
-
 #include <iostream>
 #include <fstream>
 

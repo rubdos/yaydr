@@ -19,16 +19,15 @@
 
 
 
-#include "../include/server.h"
+#include "server.h"
 
-#include "../include/log.h"
-#include "../include/property_manager.h"
-#include "../include/node_manager.h"
-#include "../include/node.h"
-#include "../include/render_manager.h"
+#include "log.h"
+#include "property_manager.h"
+#include "node_manager.h"
+#include "node.h"
+#include "render_manager.h"
 
 #include <string>
-
 
 #include <boost/asio.hpp>
 #include <boost/thread.hpp>

@@ -20,11 +20,11 @@
 
 
 
-#include "../include/render_task.h"
-#include "../include/file_compressor.h"
-#include "../include/node_manager.h"
-#include "../include/log.h"
-#include "../include/configuration.h"
+#include "render_task.h"
+#include "file_compressor.h"
+#include "node_manager.h"
+#include "log.h"
+#include "configuration.h"
 
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/string.hpp>

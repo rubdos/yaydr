@@ -18,8 +18,8 @@
  */
 
 
-#include "../include/node.h"
-#include "../include/log.h"
+#include "node.h"
+#include "log.h"
 
 #include <string>
 

@@ -17,7 +17,7 @@
     along with yaydr.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "../include/file_compressor.h"
+#include "file_compressor.h"
 
 #include <assert.h>
 #include "zlib.h"

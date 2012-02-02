@@ -18,12 +18,10 @@
  */
 
 
-#include "../include/property_manager.h"
-
-#include "../include/log.h"
+#include "property_manager.h"
+#include "log.h"
 
 #include <string>
-
 
 #include <boost/asio.hpp>
 #include <boost/thread.hpp>

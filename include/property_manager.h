@@ -21,7 +21,7 @@
 #ifndef PROPERTY_MANAGER_H
 #define PROPERTY_MANAGER_H
 
-#include "../include/log.h"
+#include "log.h"
 
 #include <string>
 
