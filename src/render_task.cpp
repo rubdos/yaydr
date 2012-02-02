@@ -242,22 +242,6 @@ void render_task::save_configuration()
 void render_task::announce()
 {
     /* Check if someone is interested in rendering this task */
-    /*
-    ifstream file;
-    file.open(this->gzip_file_name.c_str(), ios::binary);
-
-    if(!file.is_open())
-    {
-        log::error("File isn't open!");
-    }
-
-    file.seekg (0, ios::end);
-    int length = file.tellg();
-    file.seekg (0, ios::beg);
-    char * file_contents = new char[length];
-
-    file.read(file_contents,length);
-    file.close();*/
 
     node_manager nm = node_manager::Instance();
     for(unsigned int i = 0;i < nm.nodes.size();i++)
