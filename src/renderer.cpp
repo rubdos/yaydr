@@ -17,11 +17,34 @@
 
 #include "renderer.h"
 #include "render_task.h"
+#include "log.h"
+
+#include <core_api/scene.h>
+#include <core_api/environment.h>
+#include <core_api/integrator.h>
+#include <core_api/imagefilm.h>
+#include <yafraycore/xmlparser.h>
+#include <yaf_revision.h>
+#include <yafraycore/imageOutput.h>
+
+using namespace yafaray;
 
 renderer::renderer()
 {
     this->is_accepting = true;
-    //TODO: Insert logic to determine if the user is actually WILLING to render
+    //TODO: Insert logic to determine if the enduser is actually WILLING to render
+
+    //set up render environment
+    render_environment = new renderEnvironment_t();
+
+    string ppath; //try to get the plugin path
+    render_environment->getPluginPath(ppath);
+
+    if (ppath.empty())
+    {
+        log::error("Couldn't read pluginpath from environment!");
+    }
+    render_environment->loadPlugins(ppath);
 }
 
 renderer& renderer::Instance()

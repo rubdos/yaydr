@@ -20,6 +20,15 @@
 
 #include "render_task.h"
 
+#include <core_api/scene.h>
+#include <core_api/environment.h>
+#include <core_api/integrator.h>
+#include <core_api/imagefilm.h>
+#include <yafraycore/xmlparser.h>
+#include <yaf_revision.h>
+#include <yafraycore/imageOutput.h>
+
+using namespace yafaray;
 
 class renderer
 {
@@ -36,6 +45,8 @@ class renderer
     protected:
     private:
         render_task* current_job;
+
+        renderEnvironment_t* render_environment;
 };
 
 #endif // RENDERER_H
