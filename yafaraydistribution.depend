@@ -396,3 +396,8 @@
 	<boost/algorithm/string.hpp>
 	<boost/date_time/posix_time/posix_time.hpp>
 
+1328212162 source:/home/ruben/data/personal projects/yafaraydistribution/src/renderer.cpp
+	"renderer.h"
+
+1328212115 /home/ruben/data/personal projects/yafaraydistribution/include/renderer.h
+

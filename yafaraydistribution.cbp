@@ -56,6 +56,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="include" />
 		</Compiler>
 		<Linker>
 			<Add library="cryptopp" />
@@ -75,6 +76,7 @@
 		<Unit filename="include/property_manager.h" />
 		<Unit filename="include/render_manager.h" />
 		<Unit filename="include/render_task.h" />
+		<Unit filename="include/renderer.h" />
 		<Unit filename="include/server.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="nodes.txt" />
@@ -87,6 +89,7 @@
 		<Unit filename="src/property_manager.cpp" />
 		<Unit filename="src/render_manager.cpp" />
 		<Unit filename="src/render_task.cpp" />
+		<Unit filename="src/renderer.cpp" />
 		<Unit filename="src/server.cpp" />
 		<Unit filename="version.h" />
 		<Extensions>
