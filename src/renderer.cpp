@@ -16,10 +16,23 @@
 */
 
 #include "renderer.h"
+#include "render_task.h"
 
 renderer::renderer()
 {
-    //ctor
+    this->is_accepting = true;
+    //TODO: Insert logic to determine if the user is actually WILLING to render
+}
+
+renderer& renderer::Instance()
+{
+    static renderer ren;
+    return ren;
+}
+
+void renderer::set_job(render_task* rt)
+{
+    this->current_job = rt;
 }
 
 renderer::~renderer()

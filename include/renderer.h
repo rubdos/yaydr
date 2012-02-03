@@ -13,17 +13,28 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/#ifndef RENDERER_H
+*/
+
+#ifndef RENDERER_H
 #define RENDERER_H
+
+#include "render_task.h"
 
 
 class renderer
 {
     public:
         renderer();
+        static renderer& Instance(); /* Get the current renderering subsystem */
+
+        void set_job(render_task*); /* Set the current render_job*/
+
+        bool is_accepting;
+
         virtual ~renderer();
     protected:
     private:
+        render_task* current_job;
 };
 
 #endif // RENDERER_H
