@@ -24,6 +24,7 @@
 #include "configuration.h"
 #include "command_parser.h"
 #include "render_manager.h"
+#include "renderer.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -125,6 +126,9 @@ int main()
 
     render_manager::Instance().load_tasks();
 
+    log::message( "Initialze Yafaray system" );
+
+    renderer::Instance();
 
     log::message( "Done loading system... Ready when you are!" );
 
