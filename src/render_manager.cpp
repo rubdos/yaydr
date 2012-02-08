@@ -1,5 +1,5 @@
 /*
-        copyright 2011 Ruben De Smet
+        copyright 2011-2012 Ruben De Smet
         This file is part of yaydr
 
 

@@ -2,81 +2,81 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="README" open="0" top="0" tabpos="0">
-		<Cursor position="886" topLine="0" />
+		<Cursor position="41" topLine="0" />
 	</File>
 	<File name="include/command_parser.h" open="0" top="0" tabpos="6">
-		<Cursor position="694" topLine="8" />
+		<Cursor position="44" topLine="1" />
 	</File>
 	<File name="include/configuration.h" open="0" top="0" tabpos="5">
-		<Cursor position="694" topLine="9" />
+		<Cursor position="44" topLine="1" />
 	</File>
 	<File name="include/file_compressor.h" open="0" top="0" tabpos="0">
-		<Cursor position="694" topLine="18" />
+		<Cursor position="44" topLine="1" />
 	</File>
 	<File name="include/log.h" open="0" top="0" tabpos="0">
-		<Cursor position="694" topLine="0" />
+		<Cursor position="44" topLine="0" />
 	</File>
 	<File name="include/node.h" open="0" top="0" tabpos="3">
-		<Cursor position="694" topLine="0" />
+		<Cursor position="44" topLine="0" />
 	</File>
 	<File name="include/node_manager.h" open="0" top="0" tabpos="6">
-		<Cursor position="694" topLine="0" />
+		<Cursor position="44" topLine="0" />
 	</File>
 	<File name="include/property_manager.h" open="0" top="0" tabpos="0">
-		<Cursor position="763" topLine="0" />
+		<Cursor position="44" topLine="0" />
 	</File>
 	<File name="include/render_manager.h" open="0" top="0" tabpos="8">
-		<Cursor position="957" topLine="6" />
+		<Cursor position="44" topLine="1" />
 	</File>
 	<File name="include/render_task.h" open="0" top="0" tabpos="1">
-		<Cursor position="1231" topLine="24" />
+		<Cursor position="44" topLine="1" />
 	</File>
-	<File name="include/renderer.h" open="1" top="0" tabpos="2">
-		<Cursor position="1246" topLine="9" />
+	<File name="include/renderer.h" open="0" top="0" tabpos="2">
+		<Cursor position="37" topLine="1" />
 	</File>
 	<File name="include/server.h" open="0" top="0" tabpos="2">
-		<Cursor position="753" topLine="21" />
+		<Cursor position="44" topLine="1" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="2194" topLine="75" />
+	<File name="main.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="44" topLine="1" />
 	</File>
 	<File name="nodes.txt" open="0" top="0" tabpos="5">
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="src/command_parser.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="789" topLine="0" />
+		<Cursor position="44" topLine="0" />
 	</File>
 	<File name="src/configuration.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="695" topLine="9" />
+		<Cursor position="44" topLine="1" />
 	</File>
 	<File name="src/file_compressor.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="706" topLine="0" />
+		<Cursor position="44" topLine="0" />
 	</File>
-	<File name="src/log.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="875" topLine="16" />
+	<File name="src/log.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="44" topLine="1" />
 	</File>
 	<File name="src/node.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="2693" topLine="84" />
+		<Cursor position="44" topLine="1" />
 	</File>
 	<File name="src/node_manager.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="777" topLine="12" />
+		<Cursor position="44" topLine="1" />
 	</File>
 	<File name="src/property_manager.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="946" topLine="18" />
+		<Cursor position="44" topLine="1" />
 	</File>
-	<File name="src/render_manager.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="2306" topLine="77" />
+	<File name="src/render_manager.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="44" topLine="0" />
 	</File>
-	<File name="src/render_task.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="7287" topLine="227" />
+	<File name="src/render_task.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="44" topLine="1" />
 	</File>
-	<File name="src/renderer.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="3116" topLine="88" />
+	<File name="src/renderer.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="37" topLine="1" />
 	</File>
 	<File name="src/server.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="2754" topLine="89" />
+		<Cursor position="44" topLine="1" />
 	</File>
 	<File name="version.h" open="0" top="0" tabpos="0">
-		<Cursor position="1395" topLine="18" />
+		<Cursor position="44" topLine="1" />
 	</File>
 </CodeBlocks_layout_file>
