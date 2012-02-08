@@ -54,8 +54,8 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add option="-DHAVE_PTHREAD" />
 			<Add directory="include" />
 		</Compiler>
 		<Linker>
@@ -66,7 +66,19 @@
 			<Add library="boost_random" />
 			<Add library="boost_filesystem" />
 			<Add library="z" />
+			<Add library="yafaraycore" />
+			<Add library="Imath" />
+			<Add library="dl" />
+			<Add library="IlmImf" />
+			<Add library="Iex" />
+			<Add library="Half" />
+			<Add library="IlmThread" />
+			<Add library="xml2" />
+			<Add library="freetype" />
+			<Add library="m" />
+			<Add library="c" />
 		</Linker>
+		<Unit filename="README" />
 		<Unit filename="include/command_parser.h" />
 		<Unit filename="include/configuration.h" />
 		<Unit filename="include/file_compressor.h" />

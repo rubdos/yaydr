@@ -36,6 +36,15 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>
 
+#include <yafray_config.h>
+#include <core_api/scene.h>
+#include <core_api/environment.h>
+#include <core_api/integrator.h>
+#include <core_api/imagefilm.h>
+#include <yafraycore/xmlparser.h>
+#include <yaf_revision.h>
+#include <yafraycore/imageOutput.h>
+
 static int OS_windows = 1;
 static int OS_linux = 0;
 //static int OS_mac = 2;
@@ -70,9 +79,9 @@ int main()
     configuration::Instance().load();
 
     /* try catching ctrl-c */
-    signal(SIGABRT, &sighandler);
+    /*signal(SIGABRT, &sighandler);
 	signal(SIGTERM, &sighandler);
-	signal(SIGINT,  &sighandler);
+	signal(SIGINT,  &sighandler);*/
 
     /*fs::path up = fs::current_path();
     string unique_dir = up.string();
@@ -122,22 +131,18 @@ int main()
         i++;
         if(i > 10000000) break;
     }
-    node_manager::Instance().global_connect();
-
-    render_manager::Instance().load_tasks();
 
     log::message( "Initialze Yafaray system" );
 
     renderer::Instance();
 
+    node_manager::Instance().global_connect();
+
+    render_manager::Instance().load_tasks();
+
     log::message( "Done loading system... Ready when you are!" );
 
     command_parser _cp;
     _cp.start();
-    //thread cpthread( bind( &command_parser::start , _cp ) );
-    /*while(!_server.stop)
-    {
-        //lets wait the server to stop... Main thread blocking, but this isn't a problem ^^
-    }*/
     return 0;
 }

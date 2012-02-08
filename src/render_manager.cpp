@@ -42,8 +42,6 @@ using namespace boost;
 using namespace boost::system;
 using namespace boost::filesystem;
 
-static render_manager rm;
-
 render_manager::render_manager()
 {
     //ctor
@@ -69,6 +67,7 @@ void render_manager::load_tasks()
             {
                 this->_tasks.push_back( task );
                 log::debug("Recent task: " + SplitVec[SplitVec.size() - 1] );
+                task->announce();
             }
         }
     }
@@ -76,6 +75,7 @@ void render_manager::load_tasks()
 
 render_manager& render_manager::Instance()
 {
+    static render_manager rm;
     return rm;
 }
 

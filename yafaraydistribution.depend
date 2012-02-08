@@ -195,7 +195,7 @@
 	<boost/algorithm/string.hpp>
 	<boost/algorithm/string/split.hpp>
 
-1328212845 source:/home/ruben/data/personal projects/yafaraydistribution/main.cpp
+1328367197 source:/home/ruben/data/personal projects/yafaraydistribution/main.cpp
 	"node_manager.h"
 	"property_manager.h"
 	"log.h"
@@ -203,6 +203,7 @@
 	"configuration.h"
 	"command_parser.h"
 	"render_manager.h"
+	"renderer.h"
 	<iostream>
 	<stdlib.h>
 	<signal.h>
@@ -211,6 +212,14 @@
 	<boost/date_time/posix_time/posix_time.hpp>
 	<boost/algorithm/string.hpp>
 	<boost/filesystem.hpp>
+	<yafray_config.h>
+	<core_api/scene.h>
+	<core_api/environment.h>
+	<core_api/integrator.h>
+	<core_api/imagefilm.h>
+	<yafraycore/xmlparser.h>
+	<yaf_revision.h>
+	<yafraycore/imageOutput.h>
 
 1323888755 /home/ruben/data/personal projects/yafaraydistribution/include/node_manager.h
 	"node.h"
@@ -347,7 +356,7 @@
 	<boost/thread.hpp>
 	<boost/date_time/posix_time/posix_time.hpp>
 
-1328212845 source:/home/ruben/data/personal projects/yafaraydistribution/src/render_manager.cpp
+1328364808 source:/home/ruben/data/personal projects/yafaraydistribution/src/render_manager.cpp
 	"render_manager.h"
 	"render_task.h"
 	"log.h"
@@ -365,12 +374,13 @@
 	<boost/filesystem/path.hpp>
 	<boost/progress.hpp>
 
-1328212845 source:/home/ruben/data/personal projects/yafaraydistribution/src/render_task.cpp
+1328736718 source:/home/ruben/data/personal projects/yafaraydistribution/src/render_task.cpp
 	"render_task.h"
 	"file_compressor.h"
 	"node_manager.h"
 	"log.h"
 	"configuration.h"
+	"renderer.h"
 	<boost/filesystem.hpp>
 	<boost/algorithm/string.hpp>
 	<boost/algorithm/string/split.hpp>
@@ -396,10 +406,11 @@
 	<boost/algorithm/string.hpp>
 	<boost/date_time/posix_time/posix_time.hpp>
 
-1328296587 source:/home/ruben/data/personal projects/yafaraydistribution/src/renderer.cpp
+1328736616 source:/home/ruben/data/personal projects/yafaraydistribution/src/renderer.cpp
 	"renderer.h"
 	"render_task.h"
 	"log.h"
+	<yafray_config.h>
 	<core_api/scene.h>
 	<core_api/environment.h>
 	<core_api/integrator.h>
