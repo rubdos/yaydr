@@ -139,6 +139,7 @@ bool server::parse_command(string data, string ip_address)
         {
             n->send_render_task(rt); //So, let's do it :-)
         }
+        return true;
     }
     else if(command.compare("XML") == 0)
     {
@@ -146,6 +147,7 @@ bool server::parse_command(string data, string ip_address)
         render_task::from_xml_base64_string(
                                             data.substr(4, 44), //first 40 characters after pipe are sha1sum of password
                                             data.substr(45, data.length() - 4)); //following stuff is base64 encoded. Carefull here :p
+        return true;
     }
     return false;
 }
