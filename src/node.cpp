@@ -201,7 +201,7 @@ void node::_send(string data)
     else
     {
 
-        log::warning("TCP error: No OK returned on request.");
+        log::warning("TCP error: No OK/ER returned on request.");
     }
 }
 
