@@ -21,6 +21,8 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include "render_task.h"
+
 #include <string>
 
 
@@ -49,6 +51,7 @@ class node
         void answer(string, string);
         void check_render_task(string);
         void ask_for_task_xml(string);
+        void send_render_task(render_task*);
         /* vars */
         bool connected;
         int success_rate;

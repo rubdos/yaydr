@@ -197,6 +197,11 @@ render_task* render_task::from_hash(string hash)
     return NULL;
 }
 
+render_task* render_task::from_xml_base64_string(string hash, string encoded)
+{
+
+}
+
 void render_task::generate_password()
 {
     /* Generate a __sha1sum identification and a new password, to release the task from

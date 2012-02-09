@@ -75,7 +75,10 @@ void server::loop()
 bool server::parse_command(string data, string ip_address)
 {
     /* Parse a command that the node has sent */
-    if(data.substr(0,3).compare("GET") == 0)
+
+    node* n = node_manager::Instance().get_node_by_ip(ip_address);
+    string command = data.substr(0,3);
+    if(command.compare("GET") == 0)
     {
         /* GET command: send back ONLY from public. namespace */
         string return_data = property_manager::Instance().get( "public." + data.substr( 4 , data.length( ) - 4 ) );
@@ -87,7 +90,6 @@ bool server::parse_command(string data, string ip_address)
         else
         {
             /* Not found! */
-            node* n = node_manager::Instance().get_node_by_ip(ip_address);
 
             if(n->connect())
             {
@@ -101,17 +103,16 @@ bool server::parse_command(string data, string ip_address)
             return true;
         }
     }
-    else if(data.substr(0,3).compare("ANS") == 0)
+    else if(command.compare("ANS") == 0)
     {
         //TODO: send ans to node-specific propertymanager
         return true;
     }
-    else if(data.substr(0,3).compare("REN") == 0) //Do we've got this?
+    else if(command.compare("REN") == 0) //Do we've got this?
     {
         /* Check if we are permitted to use some CPU for a task. */
         if(render_manager::Instance().task_by_hash(data.substr( 4 , data.length( ) - 4 ) ) == NULL)
         {
-            node* n = node_manager::Instance().get_node_by_ip(ip_address);
 
             if(n->connect())
             {
@@ -127,25 +128,24 @@ bool server::parse_command(string data, string ip_address)
         }
         return true;
     }
-    else if(data.substr(0,3).compare("REQ") == 0) //request for xml
+    else if(command.compare("REQ") == 0) //request for xml
     {
         /* External node asks for an xml file, if available. Else negate. */
 
-        /*string plainText = "your string";
-        string encoded;
-        FileSource(plainText,
-                     true,
-                     new Base64Encoder(new
-                        StringSink(encoded)
-                                       )
-                     );
-                     */
+
         // First check if the rendertask xml/gz is available here... If not, negate request
         render_task* rt;
         if((rt = render_manager::Instance().task_by_hash(data.substr(4, data.length() - 4) ) )!= NULL )
         {
-
+            n->send_render_task(rt); //So, let's do it :-)
         }
+    }
+    else if(command.compare("XML") == 0)
+    {
+        /* We're receiving an XML file guys. Let's pray! */
+        render_task::from_xml_base64_string(
+                                            data.substr(4, 44), //first 40 characters after pipe are sha1sum of password
+                                            data.substr(45, data.length() - 4)); //following stuff is base64 encoded. Carefull here :p
     }
     return false;
 }

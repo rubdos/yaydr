@@ -39,6 +39,7 @@ class render_task
         static render_task* from_xml_file(string);
         static render_task* from_gzip_file(string);
         static render_task* from_hash(string);
+        static render_task* from_xml_base64_string(string /*hash*/, string /*encoder*/);
 
         void announce();
         void generate_password();

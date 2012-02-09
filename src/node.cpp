@@ -20,6 +20,7 @@
 
 #include "node.h"
 #include "log.h"
+#include "render_task.h"
 
 #include <string>
 
@@ -28,6 +29,9 @@
 #include <boost/thread.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/lambda/lambda.hpp>
+
+#include <cryptopp/base64.h>
+#include <cryptopp/files.h>
 
 using namespace std;
 
@@ -180,6 +184,20 @@ void node::ask_for_task_xml(string hash)
     if(this->connect())
     {
         this->_send("REQ|" + hash);
+    }
+}
+
+void node::send_render_task(render_task* rt)
+{
+    /* Send the rendertask to (node)this */
+    string encoded;
+    CryptoPP::FileSource(rt->gzip_file_name.c_str(),
+               true,
+               new CryptoPP::Base64Encoder(new CryptoPP::StringSink(encoded))
+                );
+    if(this->connect())
+    {
+        this->_send("XML|" + rt->hash + encoded);
     }
 }
 
