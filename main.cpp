@@ -122,7 +122,7 @@ int main()
     pclose(pp);
 
     property_manager::Instance().set("public.system.operating_system",operating_system_string);
-    property_manager::Instance().set("public.yd.version","0.1.2GIT");
+    property_manager::Instance().set("public.system.yd.version","0.1.2GIT");
 
     /* Start server thread */
     log::message("Starting server main thread...");
