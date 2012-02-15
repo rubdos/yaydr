@@ -78,13 +78,14 @@ bool server::parse_command(string data, string ip_address)
 
     node* n = node_manager::Instance().get_node_by_ip(ip_address);
     string command = data.substr(0,3);
+    string value = data.substr( 4 , data.length( ) - 4);
     if(command.compare("GET") == 0)
     {
         /* GET command: send back ONLY from public. namespace */
-        string return_data = property_manager::Instance().get( "public." + data.substr( 4 , data.length( ) - 4 ) );
+        string return_data = property_manager::Instance().get( "public." + value );
         if(return_data.compare("") == 0)
         {
-            log::warning("Client " + ip_address + " requested unknown property " + data);
+            log::warning("Client " + ip_address + " requested unknown property public." + value );
             return false;
         }
         else
@@ -93,7 +94,7 @@ bool server::parse_command(string data, string ip_address)
 
             if(n->connect())
             {
-                n->answer(data.substr( 4 , data.length( ) - 4 ), return_data);
+                n->answer(value, return_data);
             }
             else
             {
@@ -105,19 +106,28 @@ bool server::parse_command(string data, string ip_address)
     }
     else if(command.compare("ANS") == 0)
     {
-        //TODO: send ans to node-specific propertymanager
+        /* Store the answer */
+        log::debug("Received ANS");
+
+        vector<string> splitvector;
+        split(splitvector, value, is_any_of("|"));
+
+        if(!splitvector.size() == 2) return false; //Would be vulnerable
+
+        n->properties->set("public." + splitvector[0], splitvector[1]);
+
         return true;
     }
     else if(command.compare("REN") == 0) //Do we've got this?
     {
         /* Check if we are permitted to use some CPU for a task. */
-        if(render_manager::Instance().task_by_hash(data.substr( 4 , data.length( ) - 4 ) ) == NULL)
+        if(render_manager::Instance().task_by_hash( value ) == NULL)
         {
 
             if(n->connect())
             {
                 /* Let's already download it */
-                n->ask_for_task_xml(data.substr( 4 , data.length( ) - 4 ));
+                n->ask_for_task_xml( value );
             }
             else
             {
@@ -135,7 +145,7 @@ bool server::parse_command(string data, string ip_address)
 
         // First check if the rendertask xml/gz is available here... If not, negate request
         render_task* rt;
-        if((rt = render_manager::Instance().task_by_hash(data.substr(4, data.length() - 4) ) )!= NULL )
+        if((rt = render_manager::Instance().task_by_hash( value ) )!= NULL )
         {
             n->send_render_task(rt); //So, let's do it :-)
         }

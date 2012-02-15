@@ -22,6 +22,7 @@
 #define NODE_H
 
 #include "render_task.h"
+#include "property_manager.h"
 
 #include <string>
 
@@ -56,6 +57,8 @@ class node
         bool connected;
         int success_rate;
         string ip_address;
+
+        property_manager* properties;
     protected:
         /* vars */
         int _ping;

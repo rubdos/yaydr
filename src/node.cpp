@@ -52,6 +52,8 @@ node::node(string _ip_address)
     //'init' socket (=set to NULL...)
     this->_socket = NULL;
     this->_deadline = new deadline_timer(io_service);
+
+    this->properties = new property_manager();
 }
 
 bool node::is_online()
