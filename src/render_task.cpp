@@ -250,12 +250,13 @@ void render_task::announce()
 {
     /* Check if someone is interested in rendering this task */
 
-    if(renderer::Instance().is_accepting)
+ /*   if(renderer::Instance().is_accepting)
     {
         renderer::Instance().set_job(this);
-        renderer::Instance().start();
-    }
+        thread renderthread( bind( &renderer::start , renderer::Instance() ) );
 
+    }
+*/
     node_manager nm = node_manager::Instance();
     for(unsigned int i = 0;i < nm.nodes.size();i++)
     {
