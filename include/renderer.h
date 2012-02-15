@@ -19,6 +19,7 @@
 #define RENDERER_H
 
 #include "render_task.h"
+#include "render_progress_manager.h"
 
 #include <core_api/scene.h>
 #include <core_api/environment.h>
@@ -47,6 +48,9 @@ class renderer
         render_task* current_job;
 
         renderEnvironment_t* render_environment;
+        imageHandler_t* ih;
+
+        render_progress_manager*  rpm;
 };
 
 #endif // RENDERER_H

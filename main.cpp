@@ -139,7 +139,11 @@ int main()
 
     node_manager::Instance().global_connect();
 
+    //Load old and stored tasks
     render_manager::Instance().load_tasks();
+
+    //start rendering on the local machine
+    thread render_manager_loopthread( bind( &render_manager::loop , render_manager::Instance() ) );
 
     log::message( "Done loading system... Ready when you are!" );
 

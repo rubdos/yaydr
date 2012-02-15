@@ -159,7 +159,7 @@ render_task* render_task::from_hash(string hash)
     file.open( (configuration::Instance().yaydrdir.string() + "rendertasks/" + hash + "/" + "configuration.conf").c_str());
     if (file.is_open())
     {
-        render_task* rt = new render_task;
+        render_task* rt = new render_task();
         string line;
         while ( file.good() )
         {
@@ -183,6 +183,14 @@ render_task* render_task::from_hash(string hash)
                 if(SplitVec[0].compare("owner") == 0)
                 {
                     rt->owner = SplitVec[1];
+                }
+                if(SplitVec[0].compare("done") == 0)
+                {
+                    if( SplitVec[1].compare("1") == 0)
+                    {
+                        log::debug("Found closed RT");
+                        rt->done = true;
+                    }
                 }
             }
         }
@@ -241,6 +249,7 @@ void render_task::save_configuration()
     pf << "gz=" << this->gzip_file_name << endl;
     pf << "pwd=" << this->password << endl;
     pf << "owner=" << this->owner << endl;
+    pf << "done=" << this->done << endl;
     pf.close();
 }
 

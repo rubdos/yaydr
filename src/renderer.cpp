@@ -45,8 +45,7 @@ renderer::renderer()
 
     Y_INFO << "Trying to get pluginspath from environment..." << yendl;
 
-    yafout.setMasterVerbosity(3);
-    yafout.setMasterVerbosity(VL_WARNING);
+    yafout.setMasterVerbosity(3);//VL_WARNING);
 
 
     this->render_environment->getPluginPath(ppath);
@@ -63,6 +62,7 @@ renderer::renderer()
     {
         Y_INFO << "Format: " << formats[i] << yendl;
     }
+    this->rpm = new render_progress_manager();
 }
 
 renderer& renderer::Instance()
@@ -137,10 +137,10 @@ void renderer::start()
 
     string outputPath = this->current_job->unique_dir + "render.tga";
 
-    imageHandler_t *ih = this->render_environment->createImageHandler("outFile", ihParams);
+    this->ih = this->render_environment->createImageHandler("outFile", ihParams);
     if(ih)
     {
-            out = new imageOutput_t(ih, outputPath, bx, by);
+            out = new imageOutput_t(this->ih, outputPath, bx, by);
             if(!out)
             {
                 Y_ERROR << "Couldn't create imageOutput_t." << yendl;
@@ -153,9 +153,8 @@ void renderer::start()
         return;
     }
 
-    render_progress_manager* rpm = new render_progress_manager();
 
-    if(! this->render_environment->setupScene(*scene, render, *out, rpm) )
+    if(! this->render_environment->setupScene(*scene, render, *out, this->rpm) )
     {
         Y_ERROR << "Couldn't setupScene" << yendl;
     }
@@ -167,8 +166,12 @@ void renderer::start()
 
     delete film; //Some cleaning...
     delete out;
+    delete scene;
+
+    //reset the lot
 
     this->current_job->done = true;
+    this->is_accepting = true;
 }
 
 renderer::~renderer()

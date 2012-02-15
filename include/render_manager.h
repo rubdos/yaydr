@@ -42,6 +42,8 @@ class render_manager
 
         render_task* new_task(string);
         render_task* input_task(string);
+
+        void loop();
     protected:
     private:
         vector<render_task*> load_directory(string);

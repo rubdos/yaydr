@@ -23,6 +23,7 @@
 #include "log.h"
 #include "configuration.h"
 #include "property_manager.h"
+#include "renderer.h"
 
 #include <string>
 #include <iostream>
@@ -36,6 +37,8 @@
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
 #include <boost/progress.hpp>
+#include <boost/random/random_device.hpp>
+#include <boost/random/uniform_int_distribution.hpp>
 
 using namespace std;
 using namespace boost;
@@ -166,6 +169,46 @@ render_task* render_manager::input_task(string gzipdata)
     this->_tasks.push_back(result);
     return result;*/
     return NULL;
+}
+void render_manager::loop()
+{
+    /* Loops the renderer and adds new stuff */
+    while(true)
+    {
+        if(renderer::Instance().is_accepting)
+        {
+            //collect rendertasks to be done
+
+            vector<render_task*> to_be_done;
+
+            for (int i = 0; i < this->_tasks.size(); i++)
+            {
+                if( ! this->_tasks[i]->done)
+                {
+                    to_be_done.push_back(this->_tasks[i]);
+                }
+            }
+            if(to_be_done.size() != 0) //We don't want to divide by zero
+            {
+                log::debug("RT accepting - rendering next frame");
+
+                //init our random number generator
+                boost::random::random_device rng;
+                boost::random::uniform_int_distribution<> index_dist(0, to_be_done.size() - 1);
+
+                //set a random job out of our list, for optimal work division on the grid.
+                renderer::Instance().set_job( to_be_done[index_dist(rng)] );
+                renderer::Instance().start();
+
+                //make sure not to start over again...
+                to_be_done[index_dist(rng)]->save_configuration();
+            }
+            else
+            {
+                boost::this_thread::sleep(boost::posix_time::seconds(5)); //wait 5 seconds to retry rendering.
+            }
+        }
+    }
 }
 
 render_manager::~render_manager()
