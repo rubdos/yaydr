@@ -20,6 +20,7 @@
 #include "renderer.h"
 #include "render_task.h"
 #include "log.h"
+#include "render_progress_manager.h"
 
 #include <yafray_config.h>
 #include <core_api/scene.h>
@@ -45,6 +46,8 @@ renderer::renderer()
     Y_INFO << "Trying to get pluginspath from environment..." << yendl;
 
     yafout.setMasterVerbosity(3);
+    yafout.setMasterVerbosity(VL_WARNING);
+
 
     this->render_environment->getPluginPath(ppath);
 
@@ -72,7 +75,7 @@ void renderer::set_job(render_task* rt)
 {
     /* Set new renderjob */
     if(!this->is_accepting) return;
-    Y_INFO << "New renderjob." << yendl;
+    log::message("New renderjob.");
     this->current_job = rt;
     this->is_accepting = false; //No overwrite here...
 }
@@ -80,7 +83,7 @@ void renderer::set_job(render_task* rt)
 void renderer::start()
 {
     /* Prepare the scene */
-    Y_INFO << "Preparing a new scene to render locally..." << yendl;
+    log::message("Preparing a new scene to render locally...");
 
     scene_t* scene = new scene_t();
 
@@ -149,7 +152,10 @@ void renderer::start()
         Y_ERROR << "Couldn't create imageHandler_t" << yendl;
         return;
     }
-    if(! this->render_environment->setupScene(*scene, render, *out) )
+
+    render_progress_manager* rpm = new render_progress_manager();
+
+    if(! this->render_environment->setupScene(*scene, render, *out, rpm) )
     {
         Y_ERROR << "Couldn't setupScene" << yendl;
     }
