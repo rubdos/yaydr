@@ -53,6 +53,7 @@ render_task::render_task()
     {
         boost::filesystem::create_directory(rtsksdir);
     }
+    this->done = false;
 }
 
 render_task* render_task::from_xml_file(string filename)

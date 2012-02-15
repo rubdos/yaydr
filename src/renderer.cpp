@@ -167,6 +167,8 @@ void renderer::start()
 
     delete film; //Some cleaning...
     delete out;
+
+    this->current_job->done = true;
 }
 
 renderer::~renderer()

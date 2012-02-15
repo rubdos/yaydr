@@ -53,6 +53,8 @@ class render_task
         string password;
         string hash;
         string owner;
+
+        bool done;
     protected:
     private:
 };
