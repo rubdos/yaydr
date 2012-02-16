@@ -29,3 +29,9 @@ focussed on video rendering.
  *open project file
  *click build and run
  *enjoy!
+
+run
+g++ -oyaydr -Iinclude/ -lz -lfreetype -lyafaraycore -DHAVE_PTHREAD -lboost_thread -lboost_system -lboost_random -lboost_filesystem -lcryptopp -lpthread main.cpp src/*
+to compile.
+
+Report bugs on github -> Issues.
