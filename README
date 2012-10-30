@@ -19,15 +19,30 @@
 
     yaydr (yet another yafaray distributed raytracer) is (or: will be) a fully
 distributed and decentralised frontend for network rendering yafaray xml files,
-focussed on video rendering.
+focussed on video rendering and later on single image rendering for Linux, *BSD 
+and, if found a maintainer, Windows and Mac OSX.
 
 --------
 
--Have fun rendering your stuff! Will be upping to Archlinux AUR
--Compiling: (I'll create standard makefile later on)
+-Have fun rendering your stuff! Will be upping to Archlinux AUR and Ubuntu PPA
 
-RUN:
-g++ -oyaydr -Iinclude/ -lz -lfreetype -lyafaraycore -DHAVE_PTHREAD -lboost_thread -lboost_system -lboost_random -lboost_filesystem -lcryptopp -lpthread main.cpp src/*
-to compile.
+--------
+
+Dependencies:
+ libap2p (available on github, easy to install)
+ cmake (build dependency)
+ gnu toolchain
+ g++ (or mingw equivalent)
+
+--------
+
+Compiling:
+ mkdir build
+ cd build
+ cmake ..
+ make
+ sudo make install
+
+--------
 
 Report bugs on github -> Issues.
