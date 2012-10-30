@@ -1,0 +1,14 @@
+FIND_PATH(LIBAP2P_INCLUDEDIR NAMES libap2p/network/network.hpp
+    /usr/local/include
+    /usr/include
+)
+FIND_LIBRARY(LIBAP2P_LIBS NAMES libap2p
+    /usr/local/lib
+    /usr/lib
+)
+IF(LIBAP2P_INCLUDEDIR AND LIBAP2P_LIBS)
+    SET(LIBAP2P_INCLUDE_DIRS ${LIBAP2P_INCLUDEDIR})
+    SET(LIBAP2P_FOUND TRUE)
+ELSE()
+    SET(LIBAP2P_FOUND FALSE)
+ENDIF()
