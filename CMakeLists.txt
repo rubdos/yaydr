@@ -41,6 +41,7 @@ find_package (Threads REQUIRED)
 find_package (CryptoPP REQUIRED)
 find_package (Readline) #not required
 find_package (libap2p REQUIRED)
+find_package (yafaray REQUIRED)
 
 include_directories ("${PROJECT_SOURCE_DIR}/include")
 include_directories ("${CRYPTOPP_INCLUDE_DIRS}")
