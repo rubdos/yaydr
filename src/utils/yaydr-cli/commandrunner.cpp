@@ -16,6 +16,7 @@
  */
 
 #include "commandrunner.hpp"
+#include <iostream>
 
 namespace yaydrcli
 {
@@ -26,6 +27,16 @@ namespace yaydrcli
     {
         this->_argc = argc;
         this->_argv = argv;
+
+        bool stop = false;
+
+        while(!stop)
+        {
+            // Print head
+            std::cout << "yaydr $ ";
+            std::string command;
+            std::getline(std::cin, command);
+        }
         return 0; // Default return value
     }
 }
