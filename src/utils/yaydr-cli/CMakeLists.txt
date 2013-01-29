@@ -1,0 +1,9 @@
+set(CONSOLE_SRC
+    main.cpp
+)
+add_executable(yaydr-cli
+    ${CONSOLE_SRC})
+target_link_libraries(yaydr-cli
+    ap2p
+    ${READLINE_LIBRARY}
+)
