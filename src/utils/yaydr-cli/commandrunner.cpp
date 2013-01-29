@@ -17,8 +17,15 @@
 
 #include "commandrunner.hpp"
 
-int main(int argc, char** argv)
+namespace yaydrcli
 {
-    yaydrcli::CommandRunner cr;
-    return cr.Run(argc, argv);
+    CommandRunner::CommandRunner()
+    {
+    }
+    int CommandRunner::Run(int argc, char** argv)
+    {
+        this->_argc = argc;
+        this->_argv = argv;
+        return 0; // Default return value
+    }
 }

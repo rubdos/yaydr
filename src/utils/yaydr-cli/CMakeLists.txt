@@ -1,5 +1,6 @@
 set(CONSOLE_SRC
     main.cpp
+    commandrunner.cpp
 )
 add_executable(yaydr-cli
     ${CONSOLE_SRC})

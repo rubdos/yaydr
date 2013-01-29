@@ -15,10 +15,15 @@
  * 
  */
 
-#include "commandrunner.hpp"
-
-int main(int argc, char** argv)
+namespace yaydrcli
 {
-    yaydrcli::CommandRunner cr;
-    return cr.Run(argc, argv);
+    class CommandRunner
+    {
+        public:
+            CommandRunner();
+            int Run(int argc, char** argv);
+        private:
+            int _argc;
+            char** _argv;
+    };
 }
