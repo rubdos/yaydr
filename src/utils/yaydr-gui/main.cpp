@@ -1,6 +1,10 @@
 #include <QtGui>
+
+#include "include/projectmanagerwindow.hpp"
+
 int main(int argc, char** argv)
 {
+    Q_INIT_RESOURCE(resources);
     QApplication app(argc, argv);
 
     if (!QSystemTrayIcon::isSystemTrayAvailable()) {
@@ -11,7 +15,7 @@ int main(int argc, char** argv)
     }
     QApplication::setQuitOnLastWindowClosed(false);
 
-    QWidget window;
+    ProjectManagerWindow window;
     window.show();
     
     return app.exec();
