@@ -39,3 +39,7 @@ Thumbs.db
 build
 build/*
 
+# temp files #
+##############
+.*
+*.swp
