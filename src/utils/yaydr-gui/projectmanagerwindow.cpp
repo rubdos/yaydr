@@ -9,6 +9,8 @@ ProjectManagerWindow::ProjectManagerWindow()
     this->setWindowTitle(tr("Yaydr project manager"));
     this->setWindowIcon(QIcon(":/images/yaydr.svg"));
     this->resize(800,600);
+
+    this->_projectManager = new yaydr::ProjectManager();
 }
 void ProjectManagerWindow::_createGrid()
 {
@@ -78,4 +80,8 @@ void ProjectManagerWindow::iconActivated(QSystemTrayIcon::ActivationReason reaso
 void ProjectManagerWindow::quit()
 {
     qApp->exit();
+}
+ProjectManagerWindow::~ProjectManagerWindow()
+{
+    delete this->_projectManager;
 }

@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.6)
 project (yaydr)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeModules")
 set(CMAKE_COLOR_MAKEFILE ON)
-set(YAYDR_LIBS)
+set(YAYDR_LIBS project node network)
 set(INCLUDE_FILES
 )
 
