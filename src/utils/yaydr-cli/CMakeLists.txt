@@ -7,4 +7,5 @@ add_executable(yaydr-cli
 target_link_libraries(yaydr-cli
     ap2p
     ${READLINE_LIBRARY}
+    ${SQLITE_LIBRARY}
 )

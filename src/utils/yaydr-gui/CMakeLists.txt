@@ -18,4 +18,5 @@ add_executable(qyaydr
 target_link_libraries(qyaydr
     ap2p
     ${QT_LIBRARIES}
+    ${SQLITE_LIBRARY}
 )
