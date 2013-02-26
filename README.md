@@ -28,6 +28,13 @@ and, if found a maintainer, Windows and Mac OSX.
 ## Dependencies
 
  libap2p (available on github, easy to install)
+ Qt for the GUI
+ libreadline (linux only) for the debugging console
+ sqlite:
+     sqlite-devel (on Fedora or other RHEL based distro's) 
+     libsqlite-dev (on Ubuntu/Debian and derived systems)
+     or Windows / Mac equivalent (try ports/cygwin/mingw package manager)
+ 
  cmake (build dependency)
  gnu toolchain
  g++ (or mingw equivalent)
