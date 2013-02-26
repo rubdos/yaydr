@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "include/projectmanagerwindow.hpp"
 
 ProjectManagerWindow::ProjectManagerWindow()
@@ -9,8 +11,16 @@ ProjectManagerWindow::ProjectManagerWindow()
     this->setWindowTitle(tr("Yaydr project manager"));
     this->setWindowIcon(QIcon(":/images/yaydr.svg"));
     this->resize(800,600);
+    
+    int rc = sqlite3_open("yaydr.sqlite3", &this->_databaseHandle); 
 
-    this->_projectManager = new yaydr::ProjectManager();
+    if( rc )
+    {
+        std::cerr << "Error" << std::endl;
+    }
+    // FIXME drop in a common directory. Find a good way to do this
+
+    this->_projectManager = new yaydr::ProjectManager(this->_databaseHandle);
 }
 void ProjectManagerWindow::_createGrid()
 {
@@ -84,4 +94,5 @@ void ProjectManagerWindow::quit()
 ProjectManagerWindow::~ProjectManagerWindow()
 {
     delete this->_projectManager;
+    sqlite3_close(this->_databaseHandle);
 }

@@ -1,4 +1,5 @@
 #include <QtGui>
+#include <sqlite3.h>
 #include "project/project_manager.hpp"
 
 class ProjectManagerWindow : public QMainWindow
@@ -21,6 +22,8 @@ private:
     QVBoxLayout* _mainGrid;
 
     yaydr::ProjectManager* _projectManager;
+
+    sqlite3* _databaseHandle; // Central database for yaydr
 
 private slots:
     void quit();

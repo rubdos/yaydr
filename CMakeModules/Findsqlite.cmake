@@ -16,7 +16,7 @@
 
 
 find_path(SQLITE_INCLUDE_DIR
-  NAMES sqlite.h
+  NAMES sqlite3.h
   PATH_PREFIXES sqlite 
   PATHS
   /usr/include
@@ -27,7 +27,7 @@ find_path(SQLITE_INCLUDE_DIR
   $ENV{SystemDrive}/SQLite/*/include
   )
 
-set(SQLITE_NAMES  sqlite)
+set(SQLITE_NAMES  sqlite3)
 find_library(SQLITE_LIBRARY
   NAMES ${SQLITE_NAMES}
   PATHS

@@ -4,19 +4,27 @@
 
 namespace yaydr
 {
-    ProjectManager::ProjectManager()
+    ProjectManager::ProjectManager(sqlite3* db_handle)
     {
-        this->_databaseHandle = 
-            sqlite_open("projects.sqlite3", 0, NULL); 
-        // @feb 2013, second argument not implemented, NULL for no error message
-
-        if(! this->_databaseHandle)
+        this->_databaseHandle = db_handle;
+        this->_initDatabase();
+    }
+    void ProjectManager::_initDatabase()
+    {
+        char* error;
+        int result = sqlite3_exec(this->_databaseHandle, 
+                "CREATE TABLE IF NOT EXISTS projects\
+                (id INTEGER PRIMARY KEY,\
+                 name STRING,\
+                 description STRING,\
+                 path STRING);",
+                NULL, NULL, &error); // No callback needed
+        if(result != 0)
         {
-            std::cerr << "No database file opened" << std::endl;
+            std::cerr << "Sqlite error: " << result << std::endl;
         }
     }
     ProjectManager::~ProjectManager()
     {
-        sqlite_close(this->_databaseHandle);
     }
 }

@@ -16,16 +16,17 @@
  */
 
 #include <string>
-#include <sqlite.h>
+#include <sqlite3.h>
 
 namespace yaydr
 {
     class ProjectManager
     {
         public:
-            ProjectManager();
+            ProjectManager(sqlite3* db_handle);
             ~ProjectManager();
         private:
-            sqlite* _databaseHandle;
+            void _initDatabase();
+            sqlite3* _databaseHandle;
     };
 }
