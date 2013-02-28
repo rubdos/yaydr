@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "include/projectmanagerwindow.hpp"
+#include "project_manager/project_manager_window.hpp"
 
 ProjectManagerWindow::ProjectManagerWindow()
 {

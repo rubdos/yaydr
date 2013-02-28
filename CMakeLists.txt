@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 2.8.2)
 project (yaydr)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeModules")
 set(CMAKE_COLOR_MAKEFILE ON)
@@ -50,6 +50,7 @@ find_package (sqlite REQUIRED)
 include_directories ("${PROJECT_SOURCE_DIR}/include")
 include_directories ("${CRYPTOPP_INCLUDE_DIRS}")
 include_directories ("${SQLITE_INCLUDE_DIR}")
+
 add_subdirectory(src)
 add_subdirectory(tests)
 

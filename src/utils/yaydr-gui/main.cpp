@@ -1,6 +1,6 @@
 #include <QtGui>
 
-#include "include/projectmanagerwindow.hpp"
+#include "project_manager/project_manager_window.hpp"
 
 int main(int argc, char** argv)
 {
