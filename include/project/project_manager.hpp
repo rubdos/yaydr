@@ -17,6 +17,8 @@
 
 #include <string>
 #include <sqlite3.h>
+#include <vector>
+#include <project/project.hpp>
 
 namespace yaydr
 {
@@ -27,6 +29,9 @@ namespace yaydr
             ~ProjectManager();
         private:
             void _initDatabase();
+            void _loadProjects();
             sqlite3* _databaseHandle;
+
+            std::vector<Project*> _projects;
     };
 }

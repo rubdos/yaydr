@@ -16,14 +16,18 @@
  */
 
 #include <string>
+#include <sqlite3.h>
+#include <stdint.h>
 
 namespace yaydr
 {
     class Project
     {
         public:
-            Project(std::string name);
+            Project(sqlite3* databaseHandle, uint64_t projectId);
+            Project(sqlite3* databaseHandle, std::string name, std::string description);
         private:
-            std::string _name;
+            uint64_t _projectId;
+            sqlite3* _databaseHandle;
     };
 }
