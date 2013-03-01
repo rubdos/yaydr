@@ -21,6 +21,7 @@ ProjectManagerWindow::ProjectManagerWindow()
     // FIXME drop in a common directory. Find a good way to do this
 
     this->_projectManager = new yaydr::ProjectManager(this->_databaseHandle);
+    this->_fillGrid();
 }
 void ProjectManagerWindow::_createGrid()
 {
@@ -32,6 +33,7 @@ void ProjectManagerWindow::_createGrid()
     /* Initialze the Vertical layout */
     this->_mainGrid = new QVBoxLayout(this->_viewportScrollArea);
     this->_mainGrid->setSizeConstraint(QLayout::SetNoConstraint);
+    this->_mainGrid->setSpacing(3);
 
     /* Initialize the scrollable widget */
     this->_scrollWidget = new QWidget();
@@ -41,6 +43,19 @@ void ProjectManagerWindow::_createGrid()
     this->_viewportScrollArea->setWidget(this->_scrollWidget);
 
     this->setCentralWidget(this->_viewportScrollArea);
+}
+void ProjectManagerWindow::_fillGrid()
+{
+    yaydr::ProjectList* ps = this->_projectManager->GetProjectList();
+    for(yaydr::ProjectList::iterator pit = ps->begin();
+            pit != ps->end();
+            ++pit)
+    {
+        ProjectListItemWidget* pliw = new ProjectListItemWidget(*pit);
+        this->_projectWidgets.push_back(pliw);
+        this->_mainGrid->addWidget(pliw);
+    }
+    this->_mainGrid->addStretch(0); // make it nice and clean
 }
 void ProjectManagerWindow::_createMenus()
 {

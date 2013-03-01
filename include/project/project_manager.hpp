@@ -22,16 +22,20 @@
 
 namespace yaydr
 {
+    typedef std::vector<Project*> ProjectList;
     class ProjectManager
     {
         public:
             ProjectManager(sqlite3* db_handle);
             ~ProjectManager();
+
+            ProjectList* GetProjectList();
+
         private:
             void _initDatabase();
             void _loadProjects();
             sqlite3* _databaseHandle;
 
-            std::vector<Project*> _projects;
+            ProjectList _projects;
     };
 }

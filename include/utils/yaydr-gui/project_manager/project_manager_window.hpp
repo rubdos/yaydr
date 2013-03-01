@@ -1,6 +1,7 @@
 #include <QtGui>
 #include <sqlite3.h>
 #include "project/project_manager.hpp"
+#include "project_manager/project_list_item_widget.hpp"
 
 class ProjectManagerWindow : public QMainWindow
 {
@@ -13,6 +14,8 @@ private:
     void _createTrayIcon();
     void _createGrid();
 
+    void _fillGrid();
+
     QMenu* _fileMenu;
     QSystemTrayIcon* _trayIcon;
     QMenu* _trayIconMenu;
@@ -22,6 +25,8 @@ private:
     QVBoxLayout* _mainGrid;
 
     yaydr::ProjectManager* _projectManager;
+
+    std::vector<ProjectListItemWidget*> _projectWidgets;
 
     sqlite3* _databaseHandle; // Central database for yaydr
 

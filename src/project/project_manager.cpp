@@ -10,6 +10,10 @@ namespace yaydr
         this->_initDatabase();
         this->_loadProjects();
     }
+    ProjectList* ProjectManager::GetProjectList()
+    {
+        return &this->_projects;
+    }
     void ProjectManager::_initDatabase()
     {
         char* error;

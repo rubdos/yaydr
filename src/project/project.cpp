@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 
 #include "project/project.hpp"
 
@@ -39,5 +40,56 @@ namespace yaydr
         }
 
         this->_projectId = sqlite3_last_insert_rowid(this->_databaseHandle);
+    }
+    std::string Project::getName()
+    {
+        std::string name;
+        std::stringstream sql;
+        sql << "SELECT name FROM projects WHERE id=";
+        sql << this->_projectId;
+        
+        sqlite3_stmt* statement;
+        int result = sqlite3_prepare_v2(this->_databaseHandle, 
+                sql.str().c_str(),
+                sql.str().length(),
+                &statement,
+                NULL );
+        if( result || !statement )
+        {
+            std::cerr << "Sqlite error: " << result << std::endl;
+        }
+        if(sqlite3_step(statement) == SQLITE_ROW)
+        {
+            name = std::string((const char*)sqlite3_column_text(statement, 0)); // collumn zero is for the name
+        }
+        
+        sqlite3_finalize(statement);
+        return name;
+    }
+    std::string Project::getDescription()
+    {
+        std::string desc;
+        std::stringstream sql;
+        sql << "SELECT description FROM projects WHERE id=";
+        sql << this->_projectId;
+        
+        sqlite3_stmt* statement;
+        int result = sqlite3_prepare_v2(this->_databaseHandle, 
+                sql.str().c_str(),
+                sql.str().length(),
+                &statement,
+                NULL );
+        if( result || !statement )
+        {
+            std::cerr << "Sqlite error: " << result << std::endl;
+        }
+        if(sqlite3_step(statement) == SQLITE_ROW)
+        {
+            desc = std::string((const char*)sqlite3_column_text(statement, 0)); // collumn zero is for the desc
+        }
+        
+        sqlite3_finalize(statement);
+
+        return desc;
     }
 }
