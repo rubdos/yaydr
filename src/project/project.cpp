@@ -19,7 +19,11 @@ namespace yaydr
         std::string insert_sql = "INSERT INTO projects(name, description, path) VALUES(?,?,?)";
         sqlite3_stmt* insert_stmt;
 
-        int result = sqlite3_prepare_v2(this->_databaseHandle, insert_sql.c_str(), -1, &insert_stmt, NULL);
+        int result = sqlite3_prepare_v2(this->_databaseHandle, 
+                insert_sql.c_str(), 
+                insert_sql.length(), 
+                &insert_stmt, 
+                NULL);
 
         if (result)
         {
@@ -40,6 +44,8 @@ namespace yaydr
         }
 
         this->_projectId = sqlite3_last_insert_rowid(this->_databaseHandle);
+
+        sqlite3_finalize(insert_stmt);
     }
     std::string Project::getName()
     {

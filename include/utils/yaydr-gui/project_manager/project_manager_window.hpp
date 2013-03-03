@@ -13,16 +13,20 @@ private:
     void _createMenus();
     void _createTrayIcon();
     void _createGrid();
+    void _createNewProjectDialog();
 
     void _fillGrid();
 
     QMenu* _fileMenu;
     QSystemTrayIcon* _trayIcon;
     QMenu* _trayIconMenu;
+    QToolBar* _toolbar;
 
     QScrollArea* _viewportScrollArea;
     QWidget* _scrollWidget;
     QVBoxLayout* _mainGrid;
+
+    NewProjectDialog* _newProjectDialog;
 
     yaydr::ProjectManager* _projectManager;
 
@@ -32,5 +36,6 @@ private:
 
 private slots:
     void quit();
+    void newClicked();
     void iconActivated(QSystemTrayIcon::ActivationReason);
 };

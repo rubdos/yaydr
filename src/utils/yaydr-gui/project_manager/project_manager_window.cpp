@@ -4,15 +4,16 @@
 
 ProjectManagerWindow::ProjectManagerWindow()
 {
+    int rc = sqlite3_open("yaydr.sqlite3", &this->_databaseHandle); 
+    
     this->_createMenus();
     this->_createTrayIcon();
     this->_createGrid();
+    this->_createNewProjectDialog();
 
     this->setWindowTitle(tr("Yaydr project manager"));
     this->setWindowIcon(QIcon(":/images/yaydr.svg"));
     this->resize(800,600);
-    
-    int rc = sqlite3_open("yaydr.sqlite3", &this->_databaseHandle); 
 
     if( rc )
     {
@@ -59,11 +60,22 @@ void ProjectManagerWindow::_fillGrid()
 }
 void ProjectManagerWindow::_createMenus()
 {
+    // First, create some actions
+    QAction* aNew = new QAction(QIcon::fromTheme("document-new"), tr("&New project"), this);
+    connect(aNew, SIGNAL(triggered()), this, SLOT(newClicked()));
+
+    // Then, the main menu
     this->_fileMenu = menuBar()->addMenu( tr("&File") );
+    this->_fileMenu->addAction(aNew);
     connect(
             this->_fileMenu->addAction( tr("&Exit") ), SIGNAL(triggered()),
             this, SLOT(quit())
             );
+    // Now toolbar
+    this->_toolbar = new QToolBar("Yaydr Tools");
+    this->_toolbar->addAction(aNew);
+
+    this->addToolBar(Qt::LeftToolBarArea, this->_toolbar);
 }
 void ProjectManagerWindow::_createTrayIcon()
 {
@@ -81,6 +93,28 @@ void ProjectManagerWindow::_createTrayIcon()
     
     this->_trayIcon->setContextMenu(this->_trayIconMenu);
     this->_trayIcon->show();
+}
+void ProjectManagerWindow::_createNewProjectDialog()
+{
+    this->_newProjectDialog = new NewProjectDialog(this->_databaseHandle);
+}
+void ProjectManagerWindow::newClicked()
+{
+    // Open the new project dialog
+    if(this->_newProjectDialog->exec())
+    {
+        // Add to list
+        ProjectListItemWidget* pliw = 
+            new ProjectListItemWidget(
+                    this->_newProjectDialog->getNewProject());
+        this->_projectWidgets.push_back(pliw);
+        this->_mainGrid->addWidget(pliw);
+        
+        // Recreate the dialog
+        delete this->_newProjectDialog;
+        this->_createNewProjectDialog();
+
+    }
 }
 void ProjectManagerWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
 {

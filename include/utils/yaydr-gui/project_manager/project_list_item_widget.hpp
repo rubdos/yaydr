@@ -4,6 +4,7 @@
 #include <QtGui>
 #include <sqlite3.h>
 #include "project/project.hpp"
+#include "project_manager/new_project_dialog.hpp"
 
 /** Represents visually a yaydr::project.
  *
