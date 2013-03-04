@@ -60,17 +60,26 @@ void ProjectManagerWindow::_fillGrid()
 }
 void ProjectManagerWindow::_createMenus()
 {
-    // First, create some actions
-    QAction* aNew = new QAction(QIcon::fromTheme("document-new"), tr("&New project"), this);
-    connect(aNew, SIGNAL(triggered()), this, SLOT(newClicked()));
-
-    // Then, the main menu
+    // Create the main menu
     this->_fileMenu = menuBar()->addMenu( tr("&File") );
+
+    /* Then create some actions */
+    // New action
+    QAction* aNew = new QAction(QIcon::fromTheme("document-new"), 
+            tr("&New project"), this);
+    connect(aNew, SIGNAL(triggered()), 
+            this, SLOT(newClicked()));
+    aNew->setShortcut(QKeySequence(tr("Ctrl+N")));
     this->_fileMenu->addAction(aNew);
-    connect(
-            this->_fileMenu->addAction( tr("&Exit") ), SIGNAL(triggered()),
-            this, SLOT(quit())
-            );
+
+    // Exit action
+    QAction* aExit = new QAction(QIcon::fromTheme("application-exit"), 
+            tr("&Exit"), this);
+    connect(aExit, SIGNAL(triggered()),
+            this, SLOT(quit()));
+    aExit->setShortcut(QKeySequence(tr("Ctrl+Q")));
+    this->_fileMenu->addAction(aExit);
+
     // Now toolbar
     this->_toolbar = new QToolBar("Yaydr Tools");
     this->_toolbar->addAction(aNew);
