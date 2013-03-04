@@ -7,6 +7,7 @@ NewProjectDialog::NewProjectDialog(sqlite3* db)
 
     this->setFocusPolicy(Qt::StrongFocus);
     this->setFocus();
+    this->setWindowTitle(tr("Add a new project to Yaydr"));
 
     // Create layout
     this->_mainLayout = new QVBoxLayout(this);
