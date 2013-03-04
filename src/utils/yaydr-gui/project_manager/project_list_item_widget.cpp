@@ -16,6 +16,29 @@ ProjectListItemWidget::ProjectListItemWidget(yaydr::Project* p)
     this->_right = new QVBoxLayout(this->_rightWidget);
     this->_layout->addWidget(this->_rightWidget);
 
+    this->_layout->addStretch(0);
+
+    this->_buttonWidget = new QWidget();
+    this->_buttonLayout = new QVBoxLayout(this->_buttonWidget);
+    this->_layout->addWidget(this->_buttonWidget);
+
+    // Now add the buttons
+    {
+        this->_deleteButton = new QPushButton(
+                QIcon::fromTheme("edit-delete"), tr("Delete")
+                );
+        this->_deleteButton->setAutoFillBackground(true);
+        this->_buttonLayout->addWidget(this->_deleteButton);
+        connect(this->_deleteButton, SIGNAL(clicked()),
+                this, SLOT(onDeleteButtonClick()));
+
+        this->_editButton = new QPushButton(
+                QIcon::fromTheme("document-open"), tr("Edit")
+                );
+        this->_editButton->setAutoFillBackground(true);
+        this->_buttonLayout->addWidget(this->_editButton);
+    }
+
     this->_name = new QLabel(
             QString::fromStdString(this->_project->getName())
             );
@@ -31,8 +54,6 @@ ProjectListItemWidget::ProjectListItemWidget(yaydr::Project* p)
     this->setMaximumHeight(100);
 
     this->setStyleSheet("background-color:white;");
-
-    this->_layout->addStretch(0);
 }
 void ProjectListItemWidget::paintEvent(QPaintEvent *)
 {
@@ -40,6 +61,14 @@ void ProjectListItemWidget::paintEvent(QPaintEvent *)
     opt.init(this);
     QPainter p(this);
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
+}
+void ProjectListItemWidget::onDeleteButtonClick()
+{
+    // Call the signal
+    emit onProjectDelete(this);
+    // Delete from SQL
+    this->_project->Remove();
+    delete this->_project; 
 }
 ProjectListItemWidget::~ProjectListItemWidget()
 {

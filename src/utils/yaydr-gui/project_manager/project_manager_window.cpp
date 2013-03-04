@@ -117,21 +117,43 @@ void ProjectManagerWindow::newClicked()
     {
         // First remove stretch
         this->_mainGrid->removeItem(this->_stretchItem);
-        // Add to list
-        ProjectListItemWidget* pliw = 
-            new ProjectListItemWidget(
-                    this->_newProjectDialog->getNewProject());
-        this->_projectWidgets.push_back(pliw);
-        this->_mainGrid->addWidget(pliw);
 
+        this->_AddProjectToGrid(this->_newProjectDialog->getNewProject());
+        
         // Readd spacer
         this->_mainGrid->addSpacerItem(this->_stretchItem);
         
         // Recreate the dialog
         delete this->_newProjectDialog;
         this->_createNewProjectDialog();
-
     }
+}
+void ProjectManagerWindow::_AddProjectToGrid(yaydr::Project* p)
+{
+    // Add to list
+    ProjectListItemWidget* pliw = 
+        new ProjectListItemWidget(p);
+    this->_projectWidgets.push_back(pliw);
+    this->_mainGrid->addWidget(pliw);
+
+    connect(pliw, SIGNAL(onProjectDelete(ProjectListItemWidget*)),
+            this, SLOT(onProjectDeleted(ProjectListItemWidget*)));
+}
+void ProjectManagerWindow::onProjectDeleted(ProjectListItemWidget* pliw)
+{
+    for(std::vector<ProjectListItemWidget*>::iterator 
+            pliwit = this->_projectWidgets.begin();
+            pliwit != this->_projectWidgets.end();
+            ++pliwit)
+    {
+        if(*pliwit == pliw)
+        {
+            this->_projectWidgets.erase(pliwit);
+            break;
+        }
+    }
+    this->_mainGrid->removeWidget(pliw);
+    pliw->deleteLater();
 }
 void ProjectManagerWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
 {

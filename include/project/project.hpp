@@ -32,6 +32,10 @@ namespace yaydr
 
             std::string getName();
             std::string getDescription();
+
+            /** Removes the project from the database. 
+             */
+            void Remove();
         private:
             uint64_t _projectId;
             sqlite3* _databaseHandle;

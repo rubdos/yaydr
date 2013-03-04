@@ -12,24 +12,35 @@
 class ProjectListItemWidget : public QWidget
 {
     Q_OBJECT
-public:
-    ProjectListItemWidget(yaydr::Project*);
-    ~ProjectListItemWidget();
-protected:
-    void paintEvent(QPaintEvent*);
-private:
-    yaydr::Project* _project;
+    public:
+        ProjectListItemWidget(yaydr::Project*);
+        ~ProjectListItemWidget();
 
-    QLabel* _name;
-    QLabel* _description;
-    QVBoxLayout* _right;
-    QWidget* _rightWidget;
+    signals:
+        void onProjectDelete(ProjectListItemWidget* /* sender */);
+    private slots:
+        void onDeleteButtonClick();
 
-    QLabel* _leftWidget;
+    protected:
+        void paintEvent(QPaintEvent*);
+    private:
+        yaydr::Project* _project;
 
-    QHBoxLayout* _layout;
+        QLabel* _name;
+        QLabel* _description;
+        QVBoxLayout* _right;
+        QWidget* _rightWidget;
 
-private slots:
+        QVBoxLayout* _buttonLayout;
+        QWidget* _buttonWidget;
+        QPushButton* _deleteButton;
+        QPushButton* _editButton;
+
+        QLabel* _leftWidget;
+
+        QHBoxLayout* _layout;
+
+    private slots:
 };
 
 #endif

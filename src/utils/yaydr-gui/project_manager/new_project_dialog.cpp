@@ -21,7 +21,7 @@ NewProjectDialog::NewProjectDialog(sqlite3* db)
     this->_form->addRow( tr("Project description"), this->_txtDescription );
 
     this->_mainLayout->addWidget(this->_formWidget);
-    
+
     // Push the buttons
     this->_buttonLayoutWidget = new QWidget();
     this->_buttonLayout = new QHBoxLayout(this->_buttonLayoutWidget);

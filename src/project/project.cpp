@@ -47,6 +47,29 @@ namespace yaydr
 
         sqlite3_finalize(insert_stmt);
     }
+    void Project::Remove()
+    {
+        std::stringstream sql;
+        sql << "DELETE FROM projects WHERE id=";
+        sql << this->_projectId;
+        
+        sqlite3_stmt* statement;
+        int result = sqlite3_prepare_v2(this->_databaseHandle, 
+                sql.str().c_str(),
+                sql.str().length(),
+                &statement,
+                NULL );
+        if( result || !statement )
+        {
+            std::cerr << "Sqlite error: " << result << std::endl;
+        }
+        if(sqlite3_step(statement) == SQLITE_DONE)
+        {
+            std::cout << "Removed " << this->_projectId << std::endl;
+        }
+        
+        sqlite3_finalize(statement);
+    }
     std::string Project::getName()
     {
         std::string name;

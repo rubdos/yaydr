@@ -1,5 +1,6 @@
 #include <QtGui>
 #include <sqlite3.h>
+#include "project/project.hpp"
 #include "project/project_manager.hpp"
 #include "project_manager/project_list_item_widget.hpp"
 
@@ -16,6 +17,8 @@ private:
     void _createNewProjectDialog();
 
     void _fillGrid();
+
+    void _AddProjectToGrid(yaydr::Project*);
 
     QMenu* _fileMenu;
     QSystemTrayIcon* _trayIcon;
@@ -39,4 +42,5 @@ private slots:
     void quit();
     void newClicked();
     void iconActivated(QSystemTrayIcon::ActivationReason);
+    void onProjectDeleted(ProjectListItemWidget* p);
 };
