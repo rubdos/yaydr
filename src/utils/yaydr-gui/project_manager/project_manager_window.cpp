@@ -26,6 +26,9 @@ ProjectManagerWindow::ProjectManagerWindow()
 }
 void ProjectManagerWindow::_createGrid()
 {
+    /* Initialize stretch item */
+    this->_stretchItem = new QSpacerItem(0, 20,
+            QSizePolicy::Ignored, QSizePolicy::MinimumExpanding);
     /* Initialize the scrollarea */
     this->_viewportScrollArea = new QScrollArea();
     this->_viewportScrollArea->setWidgetResizable(true);
@@ -56,7 +59,7 @@ void ProjectManagerWindow::_fillGrid()
         this->_projectWidgets.push_back(pliw);
         this->_mainGrid->addWidget(pliw);
     }
-    this->_mainGrid->addStretch(0); // make it nice and clean
+    this->_mainGrid->addSpacerItem(this->_stretchItem); // make it nice and clean
 }
 void ProjectManagerWindow::_createMenus()
 {
@@ -112,12 +115,17 @@ void ProjectManagerWindow::newClicked()
     // Open the new project dialog
     if(this->_newProjectDialog->exec())
     {
+        // First remove stretch
+        this->_mainGrid->removeItem(this->_stretchItem);
         // Add to list
         ProjectListItemWidget* pliw = 
             new ProjectListItemWidget(
                     this->_newProjectDialog->getNewProject());
         this->_projectWidgets.push_back(pliw);
         this->_mainGrid->addWidget(pliw);
+
+        // Readd spacer
+        this->_mainGrid->addSpacerItem(this->_stretchItem);
         
         // Recreate the dialog
         delete this->_newProjectDialog;

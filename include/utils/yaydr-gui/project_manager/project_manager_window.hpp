@@ -25,6 +25,7 @@ private:
     QScrollArea* _viewportScrollArea;
     QWidget* _scrollWidget;
     QVBoxLayout* _mainGrid;
+    QSpacerItem* _stretchItem;
 
     NewProjectDialog* _newProjectDialog;
 
