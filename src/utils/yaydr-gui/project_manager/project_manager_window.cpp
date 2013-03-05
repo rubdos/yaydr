@@ -106,7 +106,7 @@ void ProjectManagerWindow::_createTrayIcon()
 }
 void ProjectManagerWindow::_createNewProjectDialog()
 {
-    this->_newProjectDialog = new NewProjectDialog(this->_databaseHandle);
+    this->_newProjectDialog = new NewProjectDialog(this, this->_databaseHandle);
 }
 void ProjectManagerWindow::newClicked()
 {

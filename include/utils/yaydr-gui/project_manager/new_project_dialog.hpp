@@ -9,7 +9,7 @@ class NewProjectDialog : public QDialog
 {
     Q_OBJECT
     public:
-        NewProjectDialog(sqlite3* db);
+        NewProjectDialog(QWidget* parent, sqlite3* db);
         
         yaydr::Project* getNewProject();
 

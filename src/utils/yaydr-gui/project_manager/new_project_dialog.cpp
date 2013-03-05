@@ -1,7 +1,8 @@
 #include "project_manager/new_project_dialog.hpp"
 #include "project/project.hpp"
 
-NewProjectDialog::NewProjectDialog(sqlite3* db)
+NewProjectDialog::NewProjectDialog(QWidget* parent, sqlite3* db)
+    :QDialog(parent)
 {
     this->_databaseHandle = db;
 
