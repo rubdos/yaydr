@@ -10,7 +10,7 @@ ProjectListItemWidget::ProjectListItemWidget(yaydr::Project* p)
 
     QImage icon(":/images/yaydr.svg");
     this->_leftWidget = new QLabel();
-    this->_leftWidget->setPixmap(QPixmap::fromImage(icon.scaledToHeight(75)));
+    this->_leftWidget->setPixmap(QPixmap::fromImage(icon.scaledToHeight(100)));
     this->_layout->addWidget(this->_leftWidget);
 
     this->_rightWidget = new QWidget();
@@ -51,7 +51,6 @@ ProjectListItemWidget::ProjectListItemWidget(yaydr::Project* p)
             );
     this->_right->addWidget(this->_description);
 
-    this->setGeometry(0,0,300,100);
     this->setMaximumHeight(100);
 
     this->setStyleSheet("background-color:white;");
