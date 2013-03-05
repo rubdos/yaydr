@@ -17,16 +17,25 @@
 
 #include <string>
 #include <sqlite3.h>
+#include <vector>
+#include <project/project.hpp>
 
 namespace yaydr
 {
+    typedef std::vector<Project*> ProjectList;
     class ProjectManager
     {
         public:
             ProjectManager(sqlite3* db_handle);
             ~ProjectManager();
+
+            ProjectList* GetProjectList();
+
         private:
             void _initDatabase();
+            void _loadProjects();
             sqlite3* _databaseHandle;
+
+            ProjectList _projects;
     };
 }

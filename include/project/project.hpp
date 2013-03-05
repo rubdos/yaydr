@@ -15,15 +15,31 @@
  * 
  */
 
+#ifndef YAYDR_PROJECT
+#define YAYDR_PROJECT
+
 #include <string>
+#include <sqlite3.h>
+#include <stdint.h>
 
 namespace yaydr
 {
     class Project
     {
         public:
-            Project(std::string name);
+            Project(sqlite3* databaseHandle, uint64_t projectId);
+            Project(sqlite3* databaseHandle, std::string name, std::string description);
+
+            std::string getName();
+            std::string getDescription();
+
+            /** Removes the project from the database. 
+             */
+            void Remove();
         private:
-            std::string _name;
+            uint64_t _projectId;
+            sqlite3* _databaseHandle;
     };
 }
+
+#endif

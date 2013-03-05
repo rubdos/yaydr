@@ -1,3 +1,3 @@
 -I include/
--I src/utils/yaydr-gui/include
--I src/utils/yaydr-cli/include
+-I include/utils/yaydr-gui/include/
+-I include/utils/yaydr-cli/include/
