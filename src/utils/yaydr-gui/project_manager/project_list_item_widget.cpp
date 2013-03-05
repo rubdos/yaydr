@@ -1,4 +1,5 @@
 #include <QtGui>
+#include <iostream>
 #include "project_manager/project_list_item_widget.hpp"
 
 ProjectListItemWidget::ProjectListItemWidget(yaydr::Project* p)
@@ -68,7 +69,6 @@ void ProjectListItemWidget::onDeleteButtonClick()
     emit onProjectDelete(this);
     // Delete from SQL
     this->_project->Remove();
-    delete this->_project; 
 }
 ProjectListItemWidget::~ProjectListItemWidget()
 {
