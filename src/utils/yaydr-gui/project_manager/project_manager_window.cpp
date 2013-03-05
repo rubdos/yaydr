@@ -55,9 +55,7 @@ void ProjectManagerWindow::_fillGrid()
             pit != ps->end();
             ++pit)
     {
-        ProjectListItemWidget* pliw = new ProjectListItemWidget(*pit);
-        this->_projectWidgets.push_back(pliw);
-        this->_mainGrid->addWidget(pliw);
+        this->_AddProjectToGrid(*pit);
     }
     this->_mainGrid->addSpacerItem(this->_stretchItem); // make it nice and clean
 }
