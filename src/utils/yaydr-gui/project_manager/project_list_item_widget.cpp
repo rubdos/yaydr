@@ -64,10 +64,24 @@ void ProjectListItemWidget::paintEvent(QPaintEvent *)
 }
 void ProjectListItemWidget::onDeleteButtonClick()
 {
-    // Call the signal
-    emit onProjectDelete(this);
-    // Delete from SQL
-    this->_project->Remove();
+    // Ask if user is sure
+    QMessageBox usersure;
+    if(QMessageBox::question( 
+                QApplication::activeWindow(), //QWidget * parent, 
+                tr("Are you sure?"), // const QString & title, 
+                tr(("Are you sure you want to delete the project " +
+                    this->_project->getName()
+                    + "?").c_str()), //const QString & text, 
+                QMessageBox::Yes | QMessageBox::Cancel, // Buttons 
+                QMessageBox::Cancel ) // Default button
+            == QMessageBox::Yes)
+    {
+        /* User confirmed */
+        // Call the signal
+        emit onProjectDelete(this);
+        // Delete from SQL
+        this->_project->Remove();
+    } // else, nop
 }
 ProjectListItemWidget::~ProjectListItemWidget()
 {
