@@ -98,6 +98,8 @@ void ProjectManagerWindow::_createTrayIcon()
     
     this->_trayIconMenu = new QMenu(this);
 
+    connect(this->_trayIconMenu->addAction(tr("&Show/hide")), SIGNAL(triggered()),
+            this, SLOT(_ShowToggle()));
     connect(this->_trayIconMenu->addAction(tr("&Exit")), SIGNAL(triggered()),
             this, SLOT(quit()));
     
@@ -153,20 +155,24 @@ void ProjectManagerWindow::onProjectDeleted(ProjectListItemWidget* pliw)
     this->_mainGrid->removeWidget(pliw);
     pliw->deleteLater();
 }
+void ProjectManagerWindow::_ShowToggle()
+{
+    if(this->isVisible())
+    {
+        this->hide();
+    }
+    else
+    {
+        this->show();
+    }
+}
 void ProjectManagerWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     switch (reason) {
         case QSystemTrayIcon::Trigger:
         case QSystemTrayIcon::DoubleClick:
             {
-                if(this->isVisible())
-                {
-                    this->hide();
-                }
-                else
-                {
-                    this->show();
-                }
+                this->_ShowToggle();
                 break;
             }
         default:

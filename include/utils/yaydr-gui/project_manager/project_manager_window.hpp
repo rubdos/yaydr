@@ -39,6 +39,7 @@ private:
     sqlite3* _databaseHandle; // Central database for yaydr
 
 private slots:
+    void _ShowToggle();
     void quit();
     void newClicked();
     void iconActivated(QSystemTrayIcon::ActivationReason);
