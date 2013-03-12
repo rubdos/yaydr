@@ -4,7 +4,7 @@
 #include <QtGui>
 #include <sqlite3.h>
 #include "project/project.hpp"
-#include "project_manager/new_project_dialog.hpp"
+#include "project_manager/edit_project_dialog.hpp"
 
 /** Represents visually a yaydr::project.
  *
@@ -20,6 +20,7 @@ class ProjectListItemWidget : public QWidget
         void onProjectDelete(ProjectListItemWidget* /* sender */);
     private slots:
         void onDeleteButtonClick();
+        void onEditButtonClick();
 
     protected:
         void paintEvent(QPaintEvent*);
@@ -40,7 +41,7 @@ class ProjectListItemWidget : public QWidget
 
         QHBoxLayout* _layout;
 
-    private slots:
+        EditProjectDialog* _epd;
 };
 
 #endif

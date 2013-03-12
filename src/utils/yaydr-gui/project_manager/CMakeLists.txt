@@ -9,5 +9,8 @@ set( PROJECTMANAGER_SRC
 
     new_project_dialog.cpp
     ${PM_INC_DIR}/new_project_dialog.hpp
+
+    edit_project_dialog.cpp
+    ${PM_INC_DIR}/edit_project_dialog.hpp
 )
 add_library(projectmanager ${PROJECTMANAGER_SRC})

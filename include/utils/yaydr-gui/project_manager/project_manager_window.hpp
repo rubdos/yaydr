@@ -3,6 +3,7 @@
 #include "project/project.hpp"
 #include "project/project_manager.hpp"
 #include "project_manager/project_list_item_widget.hpp"
+#include "project_manager/new_project_dialog.hpp"
 
 class ProjectManagerWindow : public QMainWindow
 {

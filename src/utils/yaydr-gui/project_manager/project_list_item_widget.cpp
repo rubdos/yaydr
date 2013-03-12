@@ -1,6 +1,7 @@
 #include <QtGui>
 #include <iostream>
 #include "project_manager/project_list_item_widget.hpp"
+#include "project_manager/edit_project_dialog.hpp"
 
 ProjectListItemWidget::ProjectListItemWidget(yaydr::Project* p)
 {
@@ -38,6 +39,8 @@ ProjectListItemWidget::ProjectListItemWidget(yaydr::Project* p)
                 );
         this->_editButton->setAutoFillBackground(true);
         this->_buttonLayout->addWidget(this->_editButton);
+        connect(this->_editButton, SIGNAL(clicked()),
+                this, SLOT(onEditButtonClick()));
     }
 
     this->_name = new QLabel(
@@ -54,6 +57,9 @@ ProjectListItemWidget::ProjectListItemWidget(yaydr::Project* p)
     this->setMaximumHeight(100);
 
     this->setStyleSheet("background-color:white;");
+
+    this->_epd = new EditProjectDialog(QApplication::activeWindow(), 
+            this->_project);
 }
 void ProjectListItemWidget::paintEvent(QPaintEvent *)
 {
@@ -82,6 +88,20 @@ void ProjectListItemWidget::onDeleteButtonClick()
         // Delete from SQL
         this->_project->Remove();
     } // else, nop
+}
+void ProjectListItemWidget::onEditButtonClick()
+{
+    // TODO
+    /*
+        -Create an object: ProjectEditDialog : QDialog
+        -Instance it here, make sure it is closed when this
+         object is destroyed
+        -Destroy the instance in the destructor
+       */
+    if(this->_epd == NULL)
+    {
+        //
+    }
 }
 ProjectListItemWidget::~ProjectListItemWidget()
 {
