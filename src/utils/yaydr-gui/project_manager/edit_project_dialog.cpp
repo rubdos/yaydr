@@ -43,6 +43,9 @@ void EditProjectDialog::selectFile()
 void EditProjectDialog::_refreshGrid()
 {
     // STUB
+    delete this->_grid;
+    this->_grid = new QGridLayout();
+    
 }
 void EditProjectDialog::selectDirectory()
 {

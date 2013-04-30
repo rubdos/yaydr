@@ -11,9 +11,11 @@ class EditProjectDialog : public QDialog
     public:
         EditProjectDialog(QWidget* parent, yaydr::Project*);
 
-        QVBoxLayout* _mainLayout;
 
     private:
+        QVBoxLayout* _mainLayout;
+        QGridLayout* _grid;
+        
         yaydr::Project* _project;
         void _refreshGrid();
     private slots:

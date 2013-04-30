@@ -38,6 +38,9 @@ namespace yaydr
             /** Removes the project from the database. 
              */
             void Remove();
+            
+            ImageList* getImageList();
+            VideoSequenceList* getVideoSequenceList();
         private:
             uint64_t _projectId;
             sqlite3* _databaseHandle;
