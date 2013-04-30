@@ -98,9 +98,9 @@ void ProjectListItemWidget::onEditButtonClick()
          object is destroyed
         -Destroy the instance in the destructor
        */
-    if(this->_epd == NULL)
+    if(this->_epd != NULL)
     {
-        //
+        this->_epd->show();
     }
 }
 ProjectListItemWidget::~ProjectListItemWidget()
