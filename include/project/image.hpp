@@ -15,35 +15,21 @@
  * 
  */
 
-#ifndef YAYDR_PROJECT
-#define YAYDR_PROJECT
+#ifndef YAYDR_IMAGE
+#define YAYDR_IMAGE
 
 #include <string>
-#include <sqlite3.h>
-#include <stdint.h>
-
-#include "project/image.hpp"
+#include <vector>
 
 namespace yaydr
 {
-    class Project
+    class Image
     {
-        public:
-            Project(sqlite3* databaseHandle, uint64_t projectId);
-            Project(sqlite3* databaseHandle, std::string name, std::string description);
-
-            std::string getName();
-            std::string getDescription();
-
-            /** Removes the project from the database. 
-             */
-            void Remove();
-        private:
-            uint64_t _projectId;
-            sqlite3* _databaseHandle;
-            ImageList _images;
-            VideoSequenceList _videos;
+    public:
+        Image(std::string xml_file);
     };
+    typedef std::vector<Image*> ImageList;
+    typedef ImageList VideoSequence;
+    typedef std::vector<VideoSequence> VideoSequenceList;
 }
-
 #endif
